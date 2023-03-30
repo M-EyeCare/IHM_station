@@ -69,10 +69,24 @@ include CMakeFiles/IHM_Station.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/IHM_Station.dir/flags.make
 
+CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
+CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o: IHM_Station_autogen/mocs_compilation.cpp
+CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o -MF CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o.d -o CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/mocs_compilation.cpp
+
+CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/mocs_compilation.cpp > CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.i
+
+CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/mocs_compilation.cpp -o CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.s
+
 CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
 CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o: ../src/ConsultWidget.cpp
 CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o -MF CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o.d -o CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/ConsultWidget.cpp
 
 CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.i: cmake_force
@@ -86,7 +100,7 @@ CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.s: cmake_force
 CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
 CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o: ../src/MainWindow.cpp
 CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o -MF CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o.d -o CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MainWindow.cpp
 
 CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.i: cmake_force
@@ -97,10 +111,24 @@ CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MainWindow.cpp -o CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s
 
+CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
+CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o: ../src/MonitoringThread.cpp
+CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o -MF CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o.d -o CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.cpp
+
+CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.cpp > CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.i
+
+CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.cpp -o CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.s
+
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o: ../src/MonitoringWidget.cpp
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o -MF CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o.d -o CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.cpp
 
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.i: cmake_force
@@ -114,7 +142,7 @@ CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.s: cmake_force
 CMakeFiles/IHM_Station.dir/src/testQt.cpp.o: CMakeFiles/IHM_Station.dir/flags.make
 CMakeFiles/IHM_Station.dir/src/testQt.cpp.o: ../src/testQt.cpp
 CMakeFiles/IHM_Station.dir/src/testQt.cpp.o: CMakeFiles/IHM_Station.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/IHM_Station.dir/src/testQt.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/IHM_Station.dir/src/testQt.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/IHM_Station.dir/src/testQt.cpp.o -MF CMakeFiles/IHM_Station.dir/src/testQt.cpp.o.d -o CMakeFiles/IHM_Station.dir/src/testQt.cpp.o -c /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/testQt.cpp
 
 CMakeFiles/IHM_Station.dir/src/testQt.cpp.i: cmake_force
@@ -127,16 +155,20 @@ CMakeFiles/IHM_Station.dir/src/testQt.cpp.s: cmake_force
 
 # Object files for target IHM_Station
 IHM_Station_OBJECTS = \
+"CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o" \
 "CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o" \
 "CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o" \
+"CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o" \
 "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o" \
 "CMakeFiles/IHM_Station.dir/src/testQt.cpp.o"
 
 # External object files for target IHM_Station
 IHM_Station_EXTERNAL_OBJECTS =
 
+../bin/IHM_Station: CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o
+../bin/IHM_Station: CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/src/testQt.cpp.o
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/build.make
@@ -149,7 +181,7 @@ IHM_Station_EXTERNAL_OBJECTS =
 ../bin/IHM_Station: /usr/lib/x86_64-linux-gnu/libGLX.so
 ../bin/IHM_Station: /usr/lib/x86_64-linux-gnu/libOpenGL.so
 ../bin/IHM_Station: CMakeFiles/IHM_Station.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX executable ../bin/IHM_Station"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../bin/IHM_Station"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/IHM_Station.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

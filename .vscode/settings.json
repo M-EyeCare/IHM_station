@@ -73,6 +73,8 @@
         "qpushbutton": "cpp",
         "qwidget": "cpp",
         "qhboxlayout": "cpp",
-        "qchart": "cpp"
-    }
+        "qchart": "cpp",
+        "qtcore": "cpp"
+    },
+    "cmake.sourceDirectory": "${workspaceFolder}/dev"
 }

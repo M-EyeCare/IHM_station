@@ -83,9 +83,11 @@ file(GLOB_RECURSE IHM_Station_SRC
 # %% App files
 add_executable(${APP_NAME} ${IHM_Station_SRC})
 
+set_property(TARGET ${APP_NAME} PROPERTY AUTOMOC ON)
+
 target_link_libraries(${APP_NAME} PUBLIC
 
-    # Qt6::Core
+    Qt6::Core
     Qt6::Widgets
     Qt6::Charts
 )

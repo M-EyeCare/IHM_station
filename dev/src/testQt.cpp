@@ -6,13 +6,14 @@
 #include <iostream>
 #include <QHBoxLayout>
 #include <QChart>
-#include <MonitoringWidget.h>
+#include "MonitoringWidget.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication app(argc, argv);
 
+    
     QWidget consult;
 
     MonitoringWidget monitoring;

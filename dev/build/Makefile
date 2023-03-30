@@ -129,6 +129,43 @@ IHM_Station/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/build
 .PHONY : IHM_Station/fast
 
+#=============================================================================
+# Target rules for targets named IHM_Station_autogen
+
+# Build rule for target.
+IHM_Station_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 IHM_Station_autogen
+.PHONY : IHM_Station_autogen
+
+# fast build rule for target.
+IHM_Station_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station_autogen.dir/build.make CMakeFiles/IHM_Station_autogen.dir/build
+.PHONY : IHM_Station_autogen/fast
+
+IHM_Station_autogen/mocs_compilation.o: IHM_Station_autogen/mocs_compilation.cpp.o
+.PHONY : IHM_Station_autogen/mocs_compilation.o
+
+# target to build an object file
+IHM_Station_autogen/mocs_compilation.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.o
+.PHONY : IHM_Station_autogen/mocs_compilation.cpp.o
+
+IHM_Station_autogen/mocs_compilation.i: IHM_Station_autogen/mocs_compilation.cpp.i
+.PHONY : IHM_Station_autogen/mocs_compilation.i
+
+# target to preprocess a source file
+IHM_Station_autogen/mocs_compilation.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.i
+.PHONY : IHM_Station_autogen/mocs_compilation.cpp.i
+
+IHM_Station_autogen/mocs_compilation.s: IHM_Station_autogen/mocs_compilation.cpp.s
+.PHONY : IHM_Station_autogen/mocs_compilation.s
+
+# target to generate assembly for a file
+IHM_Station_autogen/mocs_compilation.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/IHM_Station_autogen/mocs_compilation.cpp.s
+.PHONY : IHM_Station_autogen/mocs_compilation.cpp.s
+
 src/ConsultWidget.o: src/ConsultWidget.cpp.o
 .PHONY : src/ConsultWidget.o
 
@@ -176,6 +213,30 @@ src/MainWindow.s: src/MainWindow.cpp.s
 src/MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s
 .PHONY : src/MainWindow.cpp.s
+
+src/MonitoringThread.o: src/MonitoringThread.cpp.o
+.PHONY : src/MonitoringThread.o
+
+# target to build an object file
+src/MonitoringThread.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o
+.PHONY : src/MonitoringThread.cpp.o
+
+src/MonitoringThread.i: src/MonitoringThread.cpp.i
+.PHONY : src/MonitoringThread.i
+
+# target to preprocess a source file
+src/MonitoringThread.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.i
+.PHONY : src/MonitoringThread.cpp.i
+
+src/MonitoringThread.s: src/MonitoringThread.cpp.s
+.PHONY : src/MonitoringThread.s
+
+# target to generate assembly for a file
+src/MonitoringThread.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.s
+.PHONY : src/MonitoringThread.cpp.s
 
 src/MonitoringWidget.o: src/MonitoringWidget.cpp.o
 .PHONY : src/MonitoringWidget.o
@@ -233,13 +294,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... IHM_Station_autogen"
 	@echo "... IHM_Station"
+	@echo "... IHM_Station_autogen/mocs_compilation.o"
+	@echo "... IHM_Station_autogen/mocs_compilation.i"
+	@echo "... IHM_Station_autogen/mocs_compilation.s"
 	@echo "... src/ConsultWidget.o"
 	@echo "... src/ConsultWidget.i"
 	@echo "... src/ConsultWidget.s"
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
+	@echo "... src/MonitoringThread.o"
+	@echo "... src/MonitoringThread.i"
+	@echo "... src/MonitoringThread.s"
 	@echo "... src/MonitoringWidget.o"
 	@echo "... src/MonitoringWidget.i"
 	@echo "... src/MonitoringWidget.s"
