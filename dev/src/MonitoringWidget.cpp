@@ -5,30 +5,13 @@ MonitoringWidget::MonitoringWidget(QWidget *parent) : QWidget(parent)
     
     tempChart = new QChart();
     bpmChart = new QChart();
-    pressureChart = new QChart();
+    breathChart = new QChart();
     sweatingChart = new QChart();
 
     tempSeries = new QLineSeries();
     bpmSeries = new QLineSeries();
-    pressureSeries = new QLineSeries();
+    breathSeries = new QLineSeries();
     sweatingSeries = new QLineSeries();
-
-
-    // TEST SERIES*
-    // bpmSeries->append(0,0);
-    // bpmSeries->append(1000,1);
-
-    tempSeries->append(0, 1);
-    tempSeries->append(1, 2);
-    tempSeries->append(2, 1);
-
-    pressureSeries->append(0, 1);
-    pressureSeries->append(2, 3);
-    pressureSeries->append(3, 8);
-
-    sweatingSeries->append(0, 1);
-    sweatingSeries->append(2, 3);
-    sweatingSeries->append(3, 8);
 
     tempChart->addSeries(tempSeries);
     tempChart->legend()->hide();
@@ -38,17 +21,17 @@ MonitoringWidget::MonitoringWidget(QWidget *parent) : QWidget(parent)
     bpmChart->addSeries(bpmSeries);
     bpmChart->legend()->hide();
     bpmChart->createDefaultAxes();
-    bpmChart->setTitle("Pulsations cardiaques");
+    bpmChart->setTitle("Heartbeat");
 
-    pressureChart->addSeries(pressureSeries);
-    pressureChart->legend()->hide();
-    pressureChart->createDefaultAxes();
-    pressureChart->setTitle("Respiration");
+    breathChart->addSeries(breathSeries);
+    breathChart->legend()->hide();
+    breathChart->createDefaultAxes();
+    breathChart->setTitle("Breathing");
 
     sweatingChart->addSeries(sweatingSeries);
     sweatingChart->legend()->hide();
     sweatingChart->createDefaultAxes();
-    sweatingChart->setTitle("Transpiration");
+    sweatingChart->setTitle("Sweating");
 
     tempChartView = new QChartView(this->tempChart);
     tempChartView->setRenderHint(QPainter::Antialiasing);
@@ -56,50 +39,58 @@ MonitoringWidget::MonitoringWidget(QWidget *parent) : QWidget(parent)
     bpmChartView = new QChartView(this->bpmChart);
     bpmChartView->setRenderHint(QPainter::Antialiasing);
 
-    pressureChartView = new QChartView(this->pressureChart);
-    pressureChartView->setRenderHint(QPainter::Antialiasing);
+    breathChartView = new QChartView(this->breathChart);
+    breathChartView->setRenderHint(QPainter::Antialiasing);
 
     sweatingChartView = new QChartView(this->sweatingChart);
     sweatingChartView->setRenderHint(QPainter::Antialiasing);
 
     gridLayout = new QGridLayout(this);
-
     gridLayout->addWidget(this->tempChartView, 0, 0);
     gridLayout->addWidget(this->bpmChartView, 0, 1);
-    gridLayout->addWidget(this->pressureChartView, 1, 0);
+    gridLayout->addWidget(this->breathChartView, 1, 0);
     gridLayout->addWidget(this->sweatingChartView, 1, 1);
 
-    // monitor_thread=new MonitoringThread(this);
-    // monitor_thread->start();
-    bpm_mem = new QSharedMemory();
-    bpm_mem->setKey("BPM");
-    bpm_mem->create(32);
-    bpm_mem->attach();
+    bpmMem = new QSharedMemory();
+    bpmMem->setKey("BPM");
+    bpmMem->create(32);
+    bpmMem->attach();
+    
+    tempMem = new QSharedMemory();
+    tempMem->setKey("TEMP");
+    tempMem->create(32);
+    tempMem->attach();
+
+    breathMem = new QSharedMemory();
+    breathMem->setKey("BREATH");
+    breathMem->create(32);
+    breathMem->attach();
+
+    sweatingMem = new QSharedMemory();
+    sweatingMem->setKey("SWEATING");
+    sweatingMem->create(32);
+    sweatingMem->attach();
 
     updateTimer=new QTimer(this);
-    connect(updateTimer,SIGNAL(timeout()),this,SLOT(updaterSlot()));
-    updateTimer->start(100);
+    connect(updateTimer,SIGNAL(timeout()),this,SLOT(update_bpm_chart()));
+    connect(updateTimer,SIGNAL(timeout()),this,SLOT(update_temp_chart()));
+    connect(updateTimer,SIGNAL(timeout()),this,SLOT(update_breath_chart()));
+    connect(updateTimer,SIGNAL(timeout()),this,SLOT(update_sweating_chart()));
+    updateTimer->start(TIMER_UPDATE_TIME);
+
     time=0;
 }
 
-
-void MonitoringWidget::updaterSlot()
-{    
-    qDebug()<<"UPDATE";
+void MonitoringWidget::update_bpm_chart()
+{
+    qDebug()<<"update BPM chart";
 
     int* data;
-    qDebug()<<"before lock";
-    this->bpm_mem->lock();
-    qDebug()<<"before data";
-    data = (int*)(this->bpm_mem->data());
-    this->bpm_mem->unlock();
-    qDebug()<<"Time:"<<time<<"BPM: "<<*data;
+    this->bpmMem->lock();
+    data = (int*)(this->bpmMem->data());
+    this->bpmMem->unlock();
     this->bpmSeries->append(time,*data);
-    qDebug()<<"data append";
-    time++;
-    qDebug()<<"time incremented";
-
-    qDebug()<<"sleep";
+    time+=TIMER_UPDATE_TIME;
 
     bpmChart->removeSeries(bpmSeries);
     if (bpmSeries->count() > 100)
@@ -108,7 +99,62 @@ void MonitoringWidget::updaterSlot()
     }
     bpmChart->addSeries(bpmSeries);
     bpmChart->createDefaultAxes();
-    
+    bpmChart->axes().begin();
+}
 
+void MonitoringWidget::update_temp_chart()
+{
+    qDebug()<<"update TEMPERATURE chart";
 
+    int* data;
+    this->tempMem->lock();
+    data = (int*)(this->tempMem->data());
+    this->tempMem->unlock();
+    this->tempSeries->append(time,*data);
+
+    tempChart->removeSeries(tempSeries);
+    if (tempSeries->count() > 100)
+    {
+        tempSeries->remove(0);
+    }
+    tempChart->addSeries(tempSeries);
+    tempChart->createDefaultAxes();
+}
+
+void MonitoringWidget::update_breath_chart()
+{
+    qDebug()<<"update BREATHING chart";
+
+    int* data;
+    this->breathMem->lock();
+    data = (int*)(this->breathMem->data());
+    this->breathMem->unlock();
+    this->breathSeries->append(time,*data);
+
+    breathChart->removeSeries(breathSeries);
+    if (breathSeries->count() > 100)
+    {
+        breathSeries->remove(0);
+    }
+    breathChart->addSeries(breathSeries);
+    breathChart->createDefaultAxes();
+}
+
+void MonitoringWidget::update_sweating_chart()
+{
+    qDebug()<<"update SWEATING chart";
+
+    int* data;
+    this->sweatingMem->lock();
+    data = (int*)(this->sweatingMem->data());
+    this->sweatingMem->unlock();
+    this->sweatingSeries->append(time,*data);
+
+    sweatingChart ->removeSeries(sweatingSeries);
+    if (sweatingSeries->count() > 100)
+    {
+        sweatingSeries->remove(0);
+    }
+    sweatingChart ->addSeries(sweatingSeries);
+    sweatingChart ->createDefaultAxes();
 }

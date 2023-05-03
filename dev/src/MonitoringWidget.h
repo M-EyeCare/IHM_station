@@ -8,42 +8,46 @@
 #include <QTimer>
 #include "MonitoringThread.h"
 
+#define TIMER_UPDATE_TIME 100 
+
 class MonitoringWidget : public QWidget
 {
-
     Q_OBJECT
 
 public:
 
-    MonitoringThread* monitor_thread;
-
-    QSharedMemory * bpm_mem;
+    QSharedMemory * bpmMem;
+    QSharedMemory * breathMem;
+    QSharedMemory * tempMem;
+    QSharedMemory * sweatingMem;
 
     int time;
     QChart *tempChart;
     QChart *bpmChart;
-    QChart *pressureChart;
+    QChart *breathChart;
     QChart *sweatingChart;
 
     QTimer *updateTimer;
     
     QLineSeries *tempSeries;
     QLineSeries *bpmSeries;
-    QLineSeries *pressureSeries;
+    QLineSeries *breathSeries;
     QLineSeries *sweatingSeries;
-
-    QAreaSeries *bpmArea;
 
     QGridLayout *gridLayout;
 
     QChartView *tempChartView;
     QChartView *bpmChartView;
-    QChartView *pressureChartView;
+    QChartView *breathChartView;
     QChartView *sweatingChartView;
 
     MonitoringWidget(QWidget * parent=nullptr);
+
 public slots:
-    void updaterSlot();
+    void update_bpm_chart();
+    void update_temp_chart();
+    void update_breath_chart();
+    void update_sweating_chart();
 
 
 };

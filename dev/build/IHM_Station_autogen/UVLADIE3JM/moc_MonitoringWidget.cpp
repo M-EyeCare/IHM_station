@@ -47,19 +47,24 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MonitoringWidget_t {
-    const uint offsetsAndSize[6];
-    char stringdata0[30];
+    const uint offsetsAndSize[12];
+    char stringdata0[95];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_MonitoringWidget_t, stringdata0) + ofs), len 
 static const qt_meta_stringdata_MonitoringWidget_t qt_meta_stringdata_MonitoringWidget = {
     {
 QT_MOC_LITERAL(0, 16), // "MonitoringWidget"
-QT_MOC_LITERAL(17, 11), // "updaterSlot"
-QT_MOC_LITERAL(29, 0) // ""
+QT_MOC_LITERAL(17, 16), // "update_bpm_chart"
+QT_MOC_LITERAL(34, 0), // ""
+QT_MOC_LITERAL(35, 17), // "update_temp_chart"
+QT_MOC_LITERAL(53, 19), // "update_breath_chart"
+QT_MOC_LITERAL(73, 21) // "update_sweating_chart"
 
     },
-    "MonitoringWidget\0updaterSlot\0"
+    "MonitoringWidget\0update_bpm_chart\0\0"
+    "update_temp_chart\0update_breath_chart\0"
+    "update_sweating_chart"
 };
 #undef QT_MOC_LITERAL
 
@@ -69,7 +74,7 @@ static const uint qt_meta_data_MonitoringWidget[] = {
       10,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       4,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -77,9 +82,15 @@ static const uint qt_meta_data_MonitoringWidget[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   20,    2, 0x0a,    1 /* Public */,
+       1,    0,   38,    2, 0x0a,    1 /* Public */,
+       3,    0,   39,    2, 0x0a,    2 /* Public */,
+       4,    0,   40,    2, 0x0a,    3 /* Public */,
+       5,    0,   41,    2, 0x0a,    4 /* Public */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
 
        0        // eod
@@ -91,7 +102,10 @@ void MonitoringWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         auto *_t = static_cast<MonitoringWidget *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->updaterSlot(); break;
+        case 0: _t->update_bpm_chart(); break;
+        case 1: _t->update_temp_chart(); break;
+        case 2: _t->update_breath_chart(); break;
+        case 3: _t->update_sweating_chart(); break;
         default: ;
         }
     }
@@ -106,7 +120,7 @@ const QMetaObject MonitoringWidget::staticMetaObject = { {
     nullptr,
 qt_incomplete_metaTypeArray<qt_meta_stringdata_MonitoringWidget_t
 , QtPrivate::TypeAndForceComplete<MonitoringWidget, std::true_type>
-, QtPrivate::TypeAndForceComplete<void, std::false_type>
+, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
 >,
@@ -133,13 +147,13 @@ int MonitoringWidget::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 4)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 4;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 4)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 4;
     }
     return _id;
 }
