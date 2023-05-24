@@ -13,7 +13,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MainWindow.cpp" "CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o.d"
   "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.cpp" "CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o.d"
   "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.cpp" "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o.d"
-  "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/testQt.cpp" "CMakeFiles/IHM_Station.dir/src/testQt.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/testQt.cpp.o.d"
+  "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/SensorWidget.cpp" "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o.d"
+  "/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/main.cpp" "CMakeFiles/IHM_Station.dir/src/main.cpp.o" "gcc" "CMakeFiles/IHM_Station.dir/src/main.cpp.o.d"
   )
 
 # Targets to which this target links.

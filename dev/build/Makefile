@@ -262,29 +262,53 @@ src/MonitoringWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.s
 .PHONY : src/MonitoringWidget.cpp.s
 
-src/testQt.o: src/testQt.cpp.o
-.PHONY : src/testQt.o
+src/SensorWidget.o: src/SensorWidget.cpp.o
+.PHONY : src/SensorWidget.o
 
 # target to build an object file
-src/testQt.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/testQt.cpp.o
-.PHONY : src/testQt.cpp.o
+src/SensorWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o
+.PHONY : src/SensorWidget.cpp.o
 
-src/testQt.i: src/testQt.cpp.i
-.PHONY : src/testQt.i
+src/SensorWidget.i: src/SensorWidget.cpp.i
+.PHONY : src/SensorWidget.i
 
 # target to preprocess a source file
-src/testQt.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/testQt.cpp.i
-.PHONY : src/testQt.cpp.i
+src/SensorWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.i
+.PHONY : src/SensorWidget.cpp.i
 
-src/testQt.s: src/testQt.cpp.s
-.PHONY : src/testQt.s
+src/SensorWidget.s: src/SensorWidget.cpp.s
+.PHONY : src/SensorWidget.s
 
 # target to generate assembly for a file
-src/testQt.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/testQt.cpp.s
-.PHONY : src/testQt.cpp.s
+src/SensorWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.s
+.PHONY : src/SensorWidget.cpp.s
+
+src/main.o: src/main.cpp.o
+.PHONY : src/main.o
+
+# target to build an object file
+src/main.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/main.cpp.o
+.PHONY : src/main.cpp.o
+
+src/main.i: src/main.cpp.i
+.PHONY : src/main.i
+
+# target to preprocess a source file
+src/main.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/main.cpp.i
+.PHONY : src/main.cpp.i
+
+src/main.s: src/main.cpp.s
+.PHONY : src/main.s
+
+# target to generate assembly for a file
+src/main.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/main.cpp.s
+.PHONY : src/main.cpp.s
 
 # Help Target
 help:
@@ -311,9 +335,12 @@ help:
 	@echo "... src/MonitoringWidget.o"
 	@echo "... src/MonitoringWidget.i"
 	@echo "... src/MonitoringWidget.s"
-	@echo "... src/testQt.o"
-	@echo "... src/testQt.i"
-	@echo "... src/testQt.s"
+	@echo "... src/SensorWidget.o"
+	@echo "... src/SensorWidget.i"
+	@echo "... src/SensorWidget.s"
+	@echo "... src/main.o"
+	@echo "... src/main.i"
+	@echo "... src/main.s"
 .PHONY : help
 
 

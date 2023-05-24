@@ -83,7 +83,7 @@ MonitoringWidget::MonitoringWidget(QWidget *parent) : QWidget(parent)
 
 void MonitoringWidget::update_bpm_chart()
 {
-    qDebug()<<"update BPM chart";
+    // qDebug()<<"update BPM chart";
 
     int* data;
     this->bpmMem->lock();
@@ -104,7 +104,7 @@ void MonitoringWidget::update_bpm_chart()
 
 void MonitoringWidget::update_temp_chart()
 {
-    qDebug()<<"update TEMPERATURE chart";
+    // qDebug()<<"update TEMPERATURE chart";
 
     int* data;
     this->tempMem->lock();
@@ -123,7 +123,7 @@ void MonitoringWidget::update_temp_chart()
 
 void MonitoringWidget::update_breath_chart()
 {
-    qDebug()<<"update BREATHING chart";
+    // qDebug()<<"update BREATHING chart";
 
     int* data;
     this->breathMem->lock();
@@ -142,7 +142,7 @@ void MonitoringWidget::update_breath_chart()
 
 void MonitoringWidget::update_sweating_chart()
 {
-    qDebug()<<"update SWEATING chart";
+    // qDebug()<<"update SWEATING chart";
 
     int* data;
     this->sweatingMem->lock();

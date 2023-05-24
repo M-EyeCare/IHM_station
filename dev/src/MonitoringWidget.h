@@ -8,7 +8,7 @@
 #include <QTimer>
 #include "MonitoringThread.h"
 
-#define TIMER_UPDATE_TIME 100 
+#define TIMER_UPDATE_TIME 200 
 
 class MonitoringWidget : public QWidget
 {

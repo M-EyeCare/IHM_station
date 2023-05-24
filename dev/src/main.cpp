@@ -7,29 +7,28 @@
 #include <QHBoxLayout>
 #include <QChart>
 #include "MonitoringWidget.h"
+#include "ConsultWidget.h"
 
 int main(int argc, char *argv[])
 {
 
     QApplication app(argc, argv);
-
     
-    QWidget consult;
+    ConsultWidget consult;
 
     MonitoringWidget monitoring;
 
     QWidget main;
 
     QTabWidget *tabWidget = new QTabWidget();
-    tabWidget->addTab(&monitoring, "Monitoring");
     tabWidget->addTab(&consult, "Consultation");
+    tabWidget->addTab(&monitoring, "Monitoring");
+
 
     QHBoxLayout *mainLayout = new QHBoxLayout(&main);
     mainLayout->addWidget(tabWidget);
 
     tabWidget->setWindowTitle("TabWidget");
-    QPushButton buttonYes("Oui", &consult);
-    QPushButton buttonNo ("Non",&consult);
 
     main.setAutoFillBackground(true);
 

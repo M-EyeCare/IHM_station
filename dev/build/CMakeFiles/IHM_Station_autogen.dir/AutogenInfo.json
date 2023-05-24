@@ -432,6 +432,12 @@
 			"Mu",
 			"UVLADIE3JM/moc_MonitoringWidget.cpp",
 			null
+		],
+		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/SensorWidget.h",
+			"Mu",
+			"UVLADIE3JM/moc_SensorWidget.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -519,7 +525,12 @@
 			null
 		],
 		[
-			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/testQt.cpp",
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/SensorWidget.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/main.cpp",
 			"Mu",
 			null
 		]

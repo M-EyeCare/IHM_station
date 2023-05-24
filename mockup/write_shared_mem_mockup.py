@@ -21,6 +21,7 @@ sweatingMem.attach()
 while(1):
     rand=random.randint(70,170)
     bpmMem.lock()
+    print(bpmMem.data())
     bpmMem.data()[0]=rand
     bpmMem.unlock()
 

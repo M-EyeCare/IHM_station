@@ -25,6 +25,8 @@ set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/lib)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/build/lib)
 
 # COMPILER OPTIONS
+# set(CMAKE_SYSTEM_PROCESSOR arm)
+# set(CMAKE_CXX_COMPILER /usr/bin/arm-linux-gnueabihf-g++)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS_DEBUG " -g3 -DDEBUG")
 set(CMAKE_CXX_FLAGS_RELEASE " -O3")
@@ -41,7 +43,7 @@ find_package(PkgConfig REQUIRED)
 if(PkgConfig_FOUND)
     message("-> succes ")
 else()
-    message("Fail : You must hae PkgConfig installed")
+    message("Fail : You must have PkgConfig installed")
 endif()
 
 message("- Checking : Thread")

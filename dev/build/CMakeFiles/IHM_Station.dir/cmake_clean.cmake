@@ -14,8 +14,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o.d"
   "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o"
   "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o.d"
-  "CMakeFiles/IHM_Station.dir/src/testQt.cpp.o"
-  "CMakeFiles/IHM_Station.dir/src/testQt.cpp.o.d"
+  "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o"
+  "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o.d"
+  "CMakeFiles/IHM_Station.dir/src/main.cpp.o"
+  "CMakeFiles/IHM_Station.dir/src/main.cpp.o.d"
 )
 
 # Per-language clean rules from dependency scanning.
