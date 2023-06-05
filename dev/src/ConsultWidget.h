@@ -13,12 +13,11 @@ class ConsultWidget : public QStackedWidget
     Q_OBJECT
 public:
 
-    QStackedWidget *stackedWidget;
     std::map<std::string, bool> *responseMap;
-    float temperature;
-    float bpm;
-    float bcpm;
-    float sweatingRate;
+    int temperature;
+    int bpm;
+    int bcpm;
+    int sweatingRate;
 
 
     ConsultWidget(QWidget * parent=nullptr);
@@ -26,7 +25,5 @@ public:
 public slots:
     void nextWidget();
     void previousWidget();
-
-
 };
 #endif // __CONSULTWIDGET_H__

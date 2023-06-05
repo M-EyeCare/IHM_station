@@ -6,7 +6,6 @@
 #include <QtCharts>
 #include <QtCore>
 #include <QTimer>
-#include "MonitoringThread.h"
 
 #define TIMER_UPDATE_TIME 200 
 

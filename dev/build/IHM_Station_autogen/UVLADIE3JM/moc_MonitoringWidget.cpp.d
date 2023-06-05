@@ -1,6 +1,5 @@
 /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/UVLADIE3JM/moc_MonitoringWidget.cpp: /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.h \
   /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/moc_predefs.h \
-  /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.h \
   /usr/include/GL/gl.h \
   /usr/include/alloca.h \
   /usr/include/asm-generic/errno-base.h \
@@ -383,7 +382,6 @@
   /usr/include/x86_64-linux-gnu/qt6/QtCharts/qxymodelmapper.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCharts/qxyseries.h \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QDeadlineTimer \
-  /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QList \
   /usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins \

@@ -990,7 +990,6 @@
  mmc:Q_OBJECT
  mdp:/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.h
  mdp:/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/build/IHM_Station_autogen/moc_predefs.h
- mdp:/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.h
  mdp:/usr/include/GL/gl.h
  mdp:/usr/include/alloca.h
  mdp:/usr/include/asm-generic/errno-base.h
@@ -1373,7 +1372,6 @@
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCharts/qxymodelmapper.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCharts/qxyseries.h
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QDeadlineTimer
- mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QEvent
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QList
  mdp:/usr/include/x86_64-linux-gnu/qt6/QtCore/QMargins

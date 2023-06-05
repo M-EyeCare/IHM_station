@@ -3,41 +3,41 @@ import random
 from time import sleep
 
 bpmMem=QtCore.QSharedMemory("BPM")
-bpmMem.create(32)
+bpmMem.create(4)
 bpmMem.attach()
 
 tempMem=QtCore.QSharedMemory("TEMP")
-tempMem.create(32)
+tempMem.create(4)
 tempMem.attach()
 
 breathMem=QtCore.QSharedMemory("BREATH")
-breathMem.create(32)
+breathMem.create(4)
 breathMem.attach()
 
 sweatingMem=QtCore.QSharedMemory("SWEATING")
-sweatingMem.create(32)
+sweatingMem.create(4)
 sweatingMem.attach()
 
 while(1):
     rand=random.randint(70,170)
-    bpmMem.lock()
-    print(bpmMem.data())
-    bpmMem.data()[0]=rand
-    bpmMem.unlock()
+    if bpmMem.lock():
+        print(rand)
+        bpmMem.data()[0]=rand
+        bpmMem.unlock()
 
     rand=random.randint(70,170)
-    tempMem.lock()
-    tempMem.data()[0]=rand
-    tempMem.unlock()
+    if tempMem.lock():
+        tempMem.data()[0]=rand
+        tempMem.unlock()
 
     rand=random.randint(70,170)
-    breathMem.lock()
-    breathMem.data()[0]=rand
-    breathMem.unlock()
+    if breathMem.lock():
+        breathMem.data()[0]=rand
+        breathMem.unlock()
 
     rand=random.randint(70,170)
-    sweatingMem.lock()
-    sweatingMem.data()[0]=rand
-    sweatingMem.unlock()
+    if sweatingMem.lock():
+        sweatingMem.data()[0]=rand
+        sweatingMem.unlock()
     
     sleep(0.05)

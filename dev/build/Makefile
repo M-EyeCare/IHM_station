@@ -214,30 +214,6 @@ src/MainWindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s
 .PHONY : src/MainWindow.cpp.s
 
-src/MonitoringThread.o: src/MonitoringThread.cpp.o
-.PHONY : src/MonitoringThread.o
-
-# target to build an object file
-src/MonitoringThread.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.o
-.PHONY : src/MonitoringThread.cpp.o
-
-src/MonitoringThread.i: src/MonitoringThread.cpp.i
-.PHONY : src/MonitoringThread.i
-
-# target to preprocess a source file
-src/MonitoringThread.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.i
-.PHONY : src/MonitoringThread.cpp.i
-
-src/MonitoringThread.s: src/MonitoringThread.cpp.s
-.PHONY : src/MonitoringThread.s
-
-# target to generate assembly for a file
-src/MonitoringThread.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringThread.cpp.s
-.PHONY : src/MonitoringThread.cpp.s
-
 src/MonitoringWidget.o: src/MonitoringWidget.cpp.o
 .PHONY : src/MonitoringWidget.o
 
@@ -329,9 +305,6 @@ help:
 	@echo "... src/MainWindow.o"
 	@echo "... src/MainWindow.i"
 	@echo "... src/MainWindow.s"
-	@echo "... src/MonitoringThread.o"
-	@echo "... src/MonitoringThread.i"
-	@echo "... src/MonitoringThread.s"
 	@echo "... src/MonitoringWidget.o"
 	@echo "... src/MonitoringWidget.i"
 	@echo "... src/MonitoringWidget.s"

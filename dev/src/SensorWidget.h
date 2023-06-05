@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <unistd.h>
 #include <QDebug>
+
 // #include "MonitoringWidget.h"
 class SensorWidget;
 
@@ -21,25 +22,30 @@ class SensorWidget : public QWidget
 protected:
     QSharedMemory *sensorMem;
     QImage *noticeImage;
-    float *valueStorage;
-    QPushButton *confirmButton;
+    int *valueStorage;
+    QPushButton *prevButton;
+    QPushButton *nextButton;
     QPushButton *acquireButton;
     QLabel * sensorValueLabel;
     QGridLayout * layout;
     QTimer * acquireTimer;
+    QLabel * noticeLabel;
 
 public:
-    SensorWidget(QString memKey, float *valueStorage, QString noticeImagePath, QWidget *parent = nullptr);
+    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath,QString notice, QWidget *parent = nullptr);
 
 public slots:
     void acquire();
-    void confirm();
+    void next();
+    void previous();
     void startTimer();
 
 signals:
-    void confirmed();
-    void acquired();
+    void nextSig();
+    void previousSig();
+    void acquireSig();
 
 };
+
 
 #endif // __SENSORWIDGET_H__

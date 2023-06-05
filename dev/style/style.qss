@@ -1,0 +1,40 @@
+QWidget{
+    background-color: rgb(15, 15, 30);
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 15pt;
+}
+
+QPushButton{
+    color: white; 
+    font-size: 17pt;
+    height: 70px;
+    border: none;
+    padding: 5px;
+    background-color:#0f84b8;
+    border-radius: 10%;
+    margin: 20px;
+    min-width: 200px;
+}
+
+QPushButton::hover{
+    height: 90px;
+    border: 2px solid white ;
+
+}
+
+.yesButton{
+    background-color:green;
+}
+
+.noButton{
+    background-color:red;
+}
+
+.sensorLabel{
+    padding-top: 48px;
+}
+
+
+
+

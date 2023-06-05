@@ -8,12 +8,19 @@
 #include <QChart>
 #include "MonitoringWidget.h"
 #include "ConsultWidget.h"
-
+#include <QFile>
 int main(int argc, char *argv[])
 {
 
     QApplication app(argc, argv);
-    
+
+    QDir::setCurrent(qApp->applicationDirPath());
+    QFile styleFile("../style/style.qss");
+    styleFile.open(QFile::ReadOnly);
+
+    // Apply the loaded stylesheet
+    QString style(styleFile.readAll());
+
     ConsultWidget consult;
 
     MonitoringWidget monitoring;
@@ -24,23 +31,19 @@ int main(int argc, char *argv[])
     tabWidget->addTab(&consult, "Consultation");
     tabWidget->addTab(&monitoring, "Monitoring");
 
-
     QHBoxLayout *mainLayout = new QHBoxLayout(&main);
     mainLayout->addWidget(tabWidget);
 
     tabWidget->setWindowTitle("TabWidget");
 
     main.setAutoFillBackground(true);
+    app.setStyleSheet(style);
 
-    main.setPalette(QPalette(QColor(qRgb(20, 20, 30))));
     main.setWindowTitle("Main");
     QRect screenGeometry = main.geometry();
     tabWidget->setAutoFillBackground(true);
-    int height1 = screenGeometry.height();
-    int width1 = screenGeometry.width();
-    std::cout << "height:" << height1 << "width:" << width1 << std::endl;
 
     main.showFullScreen();
-    
+
     return app.exec();
 }

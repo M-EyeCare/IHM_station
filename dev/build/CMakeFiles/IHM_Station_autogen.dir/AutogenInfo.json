@@ -422,12 +422,6 @@
 			null
 		],
 		[
-			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.h",
-			"Mu",
-			"UVLADIE3JM/moc_MonitoringThread.cpp",
-			null
-		],
-		[
 			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.h",
 			"Mu",
 			"UVLADIE3JM/moc_MonitoringWidget.cpp",
@@ -511,11 +505,6 @@
 		],
 		[
 			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MainWindow.cpp",
-			"Mu",
-			null
-		],
-		[
-			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringThread.cpp",
 			"Mu",
 			null
 		],
