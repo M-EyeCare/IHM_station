@@ -21,6 +21,7 @@ class SensorWidget : public QWidget
 
 protected:
     QSharedMemory *sensorMem;
+    QSharedMemory *activationMem;
     QImage *noticeImage;
     int *valueStorage;
     QPushButton *prevButton;
@@ -30,6 +31,7 @@ protected:
     QGridLayout * layout;
     QTimer * acquireTimer;
     QLabel * noticeLabel;
+    std::string memKey;
 
 public:
     SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath,QString notice, QWidget *parent = nullptr);
@@ -38,7 +40,8 @@ public slots:
     void acquire();
     void next();
     void previous();
-    void startTimer();
+    void startAcquire();
+
 
 signals:
     void nextSig();

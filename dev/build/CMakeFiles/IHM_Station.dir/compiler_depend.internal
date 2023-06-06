@@ -2538,10 +2538,6 @@ CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel
  /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGridLayout
 
-CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o
- /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MainWindow.cpp
- /usr/include/stdc-predef.h
-
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o
  /home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.cpp
  /usr/include/stdc-predef.h

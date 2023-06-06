@@ -53,22 +53,22 @@ MonitoringWidget::MonitoringWidget(QWidget *parent) : QWidget(parent)
 
     bpmMem = new QSharedMemory();
     bpmMem->setKey("BPM");
-    // bpmMem->create(32);
+    // bpmMem->create(4);
     bpmMem->attach();
     
     tempMem = new QSharedMemory();
     tempMem->setKey("TEMP");
-    // tempMem->create(32);
+    // tempMem->create(4);
     tempMem->attach();
 
     breathMem = new QSharedMemory();
     breathMem->setKey("BREATH");
-    // breathMem->create(32);
+    // breathMem->create(4);
     breathMem->attach();
 
     sweatingMem = new QSharedMemory();
     sweatingMem->setKey("SWEATING");
-    // sweatingMem->create(32);
+    // sweatingMem->create(4);
     sweatingMem->attach();
 
     updateTimer=new QTimer(this);

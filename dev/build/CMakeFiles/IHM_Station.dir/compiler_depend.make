@@ -2536,9 +2536,6 @@ CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o: ../src/ConsultWidget.cpp \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QLabel \
   /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QGridLayout
 
-CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o: ../src/MainWindow.cpp \
-  /usr/include/stdc-predef.h
-
 CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o: ../src/MonitoringWidget.cpp \
   /usr/include/stdc-predef.h \
   ../src/MonitoringWidget.h \
@@ -5881,8 +5878,6 @@ CMakeFiles/IHM_Station.dir/src/main.cpp.o: ../src/main.cpp \
 /usr/include/x86_64-linux-gnu/qt6/QtWidgets/QTabWidget:
 
 ../src/main.cpp:
-
-../src/MainWindow.cpp:
 
 /usr/include/x86_64-linux-gnu/qt6/QtCore/QDebug:
 

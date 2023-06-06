@@ -2,7 +2,7 @@ import PySide6.QtCore as QtCore
 import random
 
 sharedMem=QtCore.QSharedMemory("BPM")
-sharedMem.create(32)
+sharedMem.create(4)
 
 sharedMem.attach()
 

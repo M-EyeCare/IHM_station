@@ -6,6 +6,7 @@ bpmMem=QtCore.QSharedMemory("BPM")
 bpmMem.create(4)
 bpmMem.attach()
 
+
 tempMem=QtCore.QSharedMemory("TEMP")
 tempMem.create(4)
 tempMem.attach()
@@ -17,6 +18,12 @@ breathMem.attach()
 sweatingMem=QtCore.QSharedMemory("SWEATING")
 sweatingMem.create(4)
 sweatingMem.attach()
+
+activationMem = QtCore.QSharedMemory("activation")
+activationMem.create(4)
+activationMem.attach()
+
+
 
 while(1):
     rand=random.randint(70,170)

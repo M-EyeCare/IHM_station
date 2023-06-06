@@ -190,30 +190,6 @@ src/ConsultWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.s
 .PHONY : src/ConsultWidget.cpp.s
 
-src/MainWindow.o: src/MainWindow.cpp.o
-.PHONY : src/MainWindow.o
-
-# target to build an object file
-src/MainWindow.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.o
-.PHONY : src/MainWindow.cpp.o
-
-src/MainWindow.i: src/MainWindow.cpp.i
-.PHONY : src/MainWindow.i
-
-# target to preprocess a source file
-src/MainWindow.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.i
-.PHONY : src/MainWindow.cpp.i
-
-src/MainWindow.s: src/MainWindow.cpp.s
-.PHONY : src/MainWindow.s
-
-# target to generate assembly for a file
-src/MainWindow.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MainWindow.cpp.s
-.PHONY : src/MainWindow.cpp.s
-
 src/MonitoringWidget.o: src/MonitoringWidget.cpp.o
 .PHONY : src/MonitoringWidget.o
 
@@ -302,9 +278,6 @@ help:
 	@echo "... src/ConsultWidget.o"
 	@echo "... src/ConsultWidget.i"
 	@echo "... src/ConsultWidget.s"
-	@echo "... src/MainWindow.o"
-	@echo "... src/MainWindow.i"
-	@echo "... src/MainWindow.s"
 	@echo "... src/MonitoringWidget.o"
 	@echo "... src/MonitoringWidget.i"
 	@echo "... src/MonitoringWidget.s"

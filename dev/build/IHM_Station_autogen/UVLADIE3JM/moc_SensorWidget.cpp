@@ -24,7 +24,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_SensorWidget_t {
     const uint offsetsAndSize[18];
-    char stringdata0[78];
+    char stringdata0[80];
 };
 #define QT_MOC_LITERAL(ofs, len) \
     uint(offsetof(qt_meta_stringdata_SensorWidget_t, stringdata0) + ofs), len 
@@ -38,12 +38,12 @@ QT_MOC_LITERAL(34, 10), // "acquireSig"
 QT_MOC_LITERAL(45, 7), // "acquire"
 QT_MOC_LITERAL(53, 4), // "next"
 QT_MOC_LITERAL(58, 8), // "previous"
-QT_MOC_LITERAL(67, 10) // "startTimer"
+QT_MOC_LITERAL(67, 12) // "startAcquire"
 
     },
     "SensorWidget\0nextSig\0\0previousSig\0"
     "acquireSig\0acquire\0next\0previous\0"
-    "startTimer"
+    "startAcquire"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +97,7 @@ void SensorWidget::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 3: _t->acquire(); break;
         case 4: _t->next(); break;
         case 5: _t->previous(); break;
-        case 6: _t->startTimer(); break;
+        case 6: _t->startAcquire(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
