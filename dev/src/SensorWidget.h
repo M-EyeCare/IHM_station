@@ -9,11 +9,6 @@
 #include <iostream>
 #include <QGridLayout>
 #include <QTimer>
-#include <unistd.h>
-#include <QDebug>
-
-// #include "MonitoringWidget.h"
-class SensorWidget;
 
 class SensorWidget : public QWidget
 {
@@ -27,14 +22,14 @@ protected:
     QPushButton *prevButton;
     QPushButton *nextButton;
     QPushButton *acquireButton;
-    QLabel * sensorValueLabel;
-    QGridLayout * layout;
-    QTimer * acquireTimer;
-    QLabel * noticeLabel;
+    QLabel *sensorValueLabel;
+    QGridLayout *layout;
+    QTimer *acquireTimer;
+    QLabel *noticeLabel;
     std::string memKey;
 
 public:
-    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath,QString notice, QWidget *parent = nullptr);
+    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice, QWidget *parent = nullptr);
 
 public slots:
     void acquire();
@@ -42,13 +37,10 @@ public slots:
     void previous();
     void startAcquire();
 
-
 signals:
     void nextSig();
     void previousSig();
     void acquireSig();
-
 };
-
 
 #endif // __SENSORWIDGET_H__

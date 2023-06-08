@@ -7,13 +7,14 @@
 #include <QtCore>
 #include <QTimer>
 #include "SensorWidget.h"
+#include "QuestionWidget.h"
 
 class ConsultWidget : public QStackedWidget
 {
     Q_OBJECT
 public:
 
-    std::map<std::string, bool> *responseMap;
+    std::map<char *, bool> *responseMap;
     int temperature;
     int bpm;
     int bcpm;
@@ -23,6 +24,7 @@ public:
     ConsultWidget(QWidget * parent=nullptr);
 
 public slots:
+    void debug();
     void nextWidget();
     void previousWidget();
 };

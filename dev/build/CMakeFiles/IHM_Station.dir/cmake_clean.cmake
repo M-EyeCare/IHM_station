@@ -10,6 +10,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/IHM_Station.dir/src/ConsultWidget.cpp.o.d"
   "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o"
   "CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.o.d"
+  "CMakeFiles/IHM_Station.dir/src/QuestionWidget.cpp.o"
+  "CMakeFiles/IHM_Station.dir/src/QuestionWidget.cpp.o.d"
   "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o"
   "CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.o.d"
   "CMakeFiles/IHM_Station.dir/src/main.cpp.o"

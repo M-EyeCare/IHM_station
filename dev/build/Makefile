@@ -214,6 +214,30 @@ src/MonitoringWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/MonitoringWidget.cpp.s
 .PHONY : src/MonitoringWidget.cpp.s
 
+src/QuestionWidget.o: src/QuestionWidget.cpp.o
+.PHONY : src/QuestionWidget.o
+
+# target to build an object file
+src/QuestionWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/QuestionWidget.cpp.o
+.PHONY : src/QuestionWidget.cpp.o
+
+src/QuestionWidget.i: src/QuestionWidget.cpp.i
+.PHONY : src/QuestionWidget.i
+
+# target to preprocess a source file
+src/QuestionWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/QuestionWidget.cpp.i
+.PHONY : src/QuestionWidget.cpp.i
+
+src/QuestionWidget.s: src/QuestionWidget.cpp.s
+.PHONY : src/QuestionWidget.s
+
+# target to generate assembly for a file
+src/QuestionWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/QuestionWidget.cpp.s
+.PHONY : src/QuestionWidget.cpp.s
+
 src/SensorWidget.o: src/SensorWidget.cpp.o
 .PHONY : src/SensorWidget.o
 
@@ -281,6 +305,9 @@ help:
 	@echo "... src/MonitoringWidget.o"
 	@echo "... src/MonitoringWidget.i"
 	@echo "... src/MonitoringWidget.s"
+	@echo "... src/QuestionWidget.o"
+	@echo "... src/QuestionWidget.i"
+	@echo "... src/QuestionWidget.s"
 	@echo "... src/SensorWidget.o"
 	@echo "... src/SensorWidget.i"
 	@echo "... src/SensorWidget.s"

@@ -40,12 +40,12 @@ SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImag
     nextButton = new QPushButton("Suivant >", this);
 
     layout = new QGridLayout(this);
-    layout->addWidget(noticeLabel, 0, 0);
-    layout->addWidget(noticeImageLabel, 0, 1);
-    layout->addWidget(acquireButton, 1, 0,Qt::AlignRight);
-    layout->addWidget(sensorValueLabel, 1, 1);
-    layout->addWidget(prevButton,2,0,Qt::AlignLeft);
-    layout->addWidget(nextButton, 2, 1,Qt::AlignRight);
+    layout->addWidget(noticeLabel, 1, 0,1,2,Qt::AlignCenter);
+    layout->addWidget(noticeImageLabel, 0, 0,1,2,Qt::AlignCenter);
+    layout->addWidget(acquireButton, 2, 0,Qt::AlignRight);
+    layout->addWidget(sensorValueLabel, 2, 1);
+    layout->addWidget(prevButton,3,0,Qt::AlignLeft);
+    layout->addWidget(nextButton, 3, 1,Qt::AlignRight);
 
     acquireTimer = new QTimer(this);
 
@@ -55,6 +55,7 @@ SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImag
     // connect(this, SIGNAL(acquired()), sensorValueLabel, SLOT(repaint()));
     connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
     connect(prevButton, SIGNAL(clicked()), this, SLOT(previous()));
+
 }
 
 void SensorWidget::next()
@@ -70,34 +71,37 @@ void SensorWidget::previous()
 void SensorWidget::startAcquire()
 {
     int* data=(int*)malloc(sizeof(int));
-    qDebug() << "before destination";
+    // qDebug() << "before destination";
 
    
     if (activationMem->lock())
     {
         int* destination = (int*)activationMem->data();
-        qDebug() << "after destination";
-
-        qDebug() << "before if ";
 
         if(sensorMem->key()==QString("BPM"))
         {
-            qDebug() << "in if";
-
             *data=1;
-            qDebug() << "in if after data";
-
+        }
+        else if(sensorMem->key()==QString("TEMP"))
+        {
+            *data=2;
+        }else if(sensorMem->key()==QString("SWEATING"))
+        {
+            *data=3;
+        }else if(sensorMem->key()==QString("BREATH"))
+        {
+            *data=4;
         }
         else{
             *data=0;
         }
-        qDebug() << "before memcpy";
+        // qDebug() << "before memcpy";
 
         memcpy(destination,data,activationMem->size());
-        qDebug() << "after memcpy";
+        // qDebug() << "after memcpy";
         
         activationMem->unlock();
-        acquireTimer->start(100);
+        acquireTimer->start(1000);
         sensorValueLabel->setText(QString::fromStdString(std::string("Acquisition en cours ...")));
     }else
     {
@@ -108,6 +112,7 @@ void SensorWidget::startAcquire()
 
 void SensorWidget::acquire()
 {
+    qDebug()<<"attempt to acquire sensor data";
     if (sensorMem->lock())
     {
         valueStorage = (int *)(this->sensorMem->data());
@@ -115,7 +120,19 @@ void SensorWidget::acquire()
         sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + std::to_string(*valueStorage)));
         sensorMem->unlock();
         acquireTimer->stop();
+        
+        qDebug()<<"before reset 0";
+        if(activationMem->lock())
+        {
+            int* destination = (int*)activationMem->data();
+            int* data=(int*)malloc(sizeof(int));
+            *data=0;
+            memcpy(destination,data,activationMem->size());
+            qDebug()<<"after reset 0";
+
+        }
         emit(acquireSig());
     }
 }
+
 

@@ -428,6 +428,12 @@
 			null
 		],
 		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/QuestionWidget.h",
+			"Mu",
+			"UVLADIE3JM/moc_QuestionWidget.cpp",
+			null
+		],
+		[
 			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/SensorWidget.h",
 			"Mu",
 			"UVLADIE3JM/moc_SensorWidget.cpp",
@@ -505,6 +511,11 @@
 		],
 		[
 			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/MonitoringWidget.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/QuestionWidget.cpp",
 			"Mu",
 			null
 		],
