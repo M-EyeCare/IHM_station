@@ -89,7 +89,7 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
 
 void ConsultWidget::debug()
 {
-    qDebug()<< responseMap->count("yolo");
+    // qDebug()<< responseMap->count("yolo");
 }
 
 void ConsultWidget::nextWidget()

@@ -30,7 +30,7 @@ public slots:
     void confirm();
 
 signals:
-    void confirmed();
+    void confirmSig();
     void previousSig();
 
 };

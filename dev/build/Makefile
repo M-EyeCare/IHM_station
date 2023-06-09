@@ -262,6 +262,30 @@ src/SensorWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/SensorWidget.cpp.s
 .PHONY : src/SensorWidget.cpp.s
 
+src/ValidationWidget.o: src/ValidationWidget.cpp.o
+.PHONY : src/ValidationWidget.o
+
+# target to build an object file
+src/ValidationWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/ValidationWidget.cpp.o
+.PHONY : src/ValidationWidget.cpp.o
+
+src/ValidationWidget.i: src/ValidationWidget.cpp.i
+.PHONY : src/ValidationWidget.i
+
+# target to preprocess a source file
+src/ValidationWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/ValidationWidget.cpp.i
+.PHONY : src/ValidationWidget.cpp.i
+
+src/ValidationWidget.s: src/ValidationWidget.cpp.s
+.PHONY : src/ValidationWidget.s
+
+# target to generate assembly for a file
+src/ValidationWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/ValidationWidget.cpp.s
+.PHONY : src/ValidationWidget.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -285,30 +309,6 @@ src/main.s: src/main.cpp.s
 src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
-
-src/validationWidget.o: src/validationWidget.cpp.o
-.PHONY : src/validationWidget.o
-
-# target to build an object file
-src/validationWidget.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.o
-.PHONY : src/validationWidget.cpp.o
-
-src/validationWidget.i: src/validationWidget.cpp.i
-.PHONY : src/validationWidget.i
-
-# target to preprocess a source file
-src/validationWidget.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.i
-.PHONY : src/validationWidget.cpp.i
-
-src/validationWidget.s: src/validationWidget.cpp.s
-.PHONY : src/validationWidget.s
-
-# target to generate assembly for a file
-src/validationWidget.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.s
-.PHONY : src/validationWidget.cpp.s
 
 # Help Target
 help:
@@ -335,12 +335,12 @@ help:
 	@echo "... src/SensorWidget.o"
 	@echo "... src/SensorWidget.i"
 	@echo "... src/SensorWidget.s"
+	@echo "... src/ValidationWidget.o"
+	@echo "... src/ValidationWidget.i"
+	@echo "... src/ValidationWidget.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
-	@echo "... src/validationWidget.o"
-	@echo "... src/validationWidget.i"
-	@echo "... src/validationWidget.s"
 .PHONY : help
 
 

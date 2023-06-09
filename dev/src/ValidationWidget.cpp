@@ -13,13 +13,3 @@ void ValidationWidget::confirm()
 {
     
 }
-
-void ValidationWidget::confirmed()
-{
-    
-}
-
-void ValidationWidget::previousSig()
-{
-    
-}

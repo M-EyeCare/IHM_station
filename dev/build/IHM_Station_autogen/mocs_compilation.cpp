@@ -3,4 +3,4 @@
 #include "UVLADIE3JM/moc_MonitoringWidget.cpp"
 #include "UVLADIE3JM/moc_QuestionWidget.cpp"
 #include "UVLADIE3JM/moc_SensorWidget.cpp"
-#include "UVLADIE3JM/moc_validationWidget.cpp"
+#include "UVLADIE3JM/moc_ValidationWidget.cpp"
