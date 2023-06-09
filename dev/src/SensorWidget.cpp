@@ -1,7 +1,6 @@
-
 #include "SensorWidget.h"
 
-SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice ,QWidget *parent) : QWidget(parent)
+SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice ,QString capteur ,QWidget *parent) : QWidget(parent)
 {
     sensorMem = new QSharedMemory();
     sensorMem->setKey(memKey);
@@ -16,6 +15,11 @@ SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImag
 
     activationMem->attach();
     // activationMem->lock();
+
+    capteurLabel = new QLabel(this);
+    QString capteurText = "<html><body><p style='font-size:18pt;font-weight:bold;'>" + capteur + "</p></body></html>";
+    capteurLabel->setText(capteurText);
+    capteurLabel->setProperty("class", "capteurLabel");
 
     QPixmap notImg(noticeImagePath);
     QLabel * noticeImageLabel= new QLabel();
@@ -40,12 +44,13 @@ SensorWidget::SensorWidget(QString memKey, int *valueStorage, QString noticeImag
     nextButton = new QPushButton("Suivant >", this);
 
     layout = new QGridLayout(this);
-    layout->addWidget(noticeLabel, 1, 0,1,2,Qt::AlignCenter);
-    layout->addWidget(noticeImageLabel, 0, 0,1,2,Qt::AlignCenter);
-    layout->addWidget(acquireButton, 2, 0,Qt::AlignRight);
-    layout->addWidget(sensorValueLabel, 2, 1);
-    layout->addWidget(prevButton,3,0,Qt::AlignLeft);
-    layout->addWidget(nextButton, 3, 1,Qt::AlignRight);
+    layout->addWidget(capteurLabel, 0, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(noticeLabel, 2, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(noticeImageLabel, 1, 0,1,2,Qt::AlignCenter);
+    layout->addWidget(acquireButton, 3, 0, 1, 1, Qt::AlignCenter);
+    layout->addWidget(sensorValueLabel, 3, 1, 1, 1, Qt::AlignCenter);
+    layout->addWidget(prevButton, 4, 0, 1, 1, Qt::AlignLeft);
+    layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
 
     acquireTimer = new QTimer(this);
 

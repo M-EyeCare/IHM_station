@@ -1,15 +1,19 @@
 #include "QuestionWidget.h"
 
-QuestionWidget::QuestionWidget(char* question, char* key, std::map<char* , bool> *responseMap, QWidget *parent) : QWidget(parent)
+QuestionWidget::QuestionWidget(char* question, char* consigne, char* key, std::map<char* , bool> *responseMap, QWidget *parent) : QWidget(parent)
 {
 
+    consigneLabel = new QLabel(this);
+    QString consigneText = "<html><body><p style='font-size:18pt;font-weight:bold;'>" + QString(consigne) + "</p></body></html>";
+    consigneLabel->setText(consigneText);
+    consigneLabel->setProperty("class", "consigneLabel");
+    
     questionLabel = new QLabel(this);
     questionLabel->setText(QString(question));
     questionLabel->setProperty("class", "questionLabel");
 
     this->key=key;
     this->responseMap=responseMap;
-
     
     yesButton = new QPushButton("Oui", this);
     yesButton->setProperty("class", "yesButton");
@@ -22,11 +26,12 @@ QuestionWidget::QuestionWidget(char* question, char* key, std::map<char* , bool>
     nextButton = new QPushButton("Suivant >", this);
 
     layout = new QGridLayout(this);
-    layout->addWidget(questionLabel, 0, 0, 0, 0, Qt::AlignCenter);
-    layout->addWidget(yesButton, 1, 0, 1, 1, Qt::AlignRight);
-    layout->addWidget(noButton, 1, 1, 1, 1, Qt::AlignLeft);
-    layout->addWidget(prevButton, 2, 0, 1, 1, Qt::AlignLeft);
-    layout->addWidget(nextButton, 2, 1, 1, 1, Qt::AlignRight);
+    layout->addWidget(consigneLabel, 0, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(questionLabel, 1, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(yesButton, 2, 0, 1, 1, Qt::AlignCenter | Qt::AlignRight);
+    layout->addWidget(noButton, 2, 1, 1, 1, Qt::AlignCenter | Qt::AlignLeft);
+    layout->addWidget(prevButton, 3, 0, 1, 1, Qt::AlignLeft);
+    layout->addWidget(nextButton, 3, 1, 1, 1, Qt::AlignRight);
     
     connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
     connect(prevButton, SIGNAL(clicked()), this, SLOT(previous())); 

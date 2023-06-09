@@ -19,12 +19,13 @@ protected:
     QPushButton *yesButton;
     QPushButton *noButton;
     QLabel *questionLabel;
+    QLabel *consigneLabel;
     QGridLayout *layout;
     char* key;
     std::map<char*, bool> *responseMap;
 
 public:
-    QuestionWidget(char* question, char* key, std::map<char *, bool> *responseMap, QWidget *parent = nullptr);
+    QuestionWidget(char* question, char* consigne, char* key, std::map<char *, bool> *responseMap, QWidget *parent = nullptr);
 
 public slots:
     void next();

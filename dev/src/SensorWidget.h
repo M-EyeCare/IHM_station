@@ -26,10 +26,11 @@ protected:
     QGridLayout *layout;
     QTimer *acquireTimer;
     QLabel *noticeLabel;
+    QLabel *capteurLabel;
     std::string memKey;
 
 public:
-    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice, QWidget *parent = nullptr);
+    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice, QString capteur, QWidget *parent = nullptr);
 
 public slots:
     void acquire();
