@@ -22,7 +22,7 @@ QuestionWidget::QuestionWidget(char* question, char* key, std::map<char* , bool>
     nextButton = new QPushButton("Suivant >", this);
 
     layout = new QGridLayout(this);
-    layout->addWidget(questionLabel, 0, 0, 0, 2, Qt::AlignCenter);
+    layout->addWidget(questionLabel, 0, 0, 0, 0, Qt::AlignCenter);
     layout->addWidget(yesButton, 1, 0, 1, 1, Qt::AlignRight);
     layout->addWidget(noButton, 1, 1, 1, 1, Qt::AlignLeft);
     layout->addWidget(prevButton, 2, 0, 1, 1, Qt::AlignLeft);

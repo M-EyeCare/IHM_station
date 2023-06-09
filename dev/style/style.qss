@@ -25,16 +25,25 @@ QPushButton::hover{
 
 .yesButton{
     background-color:green;
+    font-size: 20pt;
+    margin-bottom: 100px;
 }
 
 .noButton{
     background-color:red;
+    font-size: 20pt;
+    margin-bottom: 100px;
 }
 
 .sensorLabel{
     padding-top: 48px;
+    font-size: 20pt;
 }
 
+.questionLabel{
+    font-size: 25pt;
+    margin-bottom: 120px;
+}
 
 
 

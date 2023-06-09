@@ -30,7 +30,6 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     
     connect(headacheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
     connect(headacheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
-    // connect(headacheWidget, SIGNAL(nextSig()), this, SLOT(debug()));
 
 
 }

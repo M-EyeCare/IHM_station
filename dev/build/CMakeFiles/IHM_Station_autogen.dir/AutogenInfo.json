@@ -438,6 +438,12 @@
 			"Mu",
 			"UVLADIE3JM/moc_SensorWidget.cpp",
 			null
+		],
+		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/validationWidget.h",
+			"Mu",
+			"UVLADIE3JM/moc_validationWidget.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -526,6 +532,11 @@
 		],
 		[
 			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/main.cpp",
+			"Mu",
+			null
+		],
+		[
+			"/home/enzo/Bureau/PDS-MEyeConsult/IHM_station/MEyeConsult/IHM_station/dev/src/validationWidget.cpp",
 			"Mu",
 			null
 		]

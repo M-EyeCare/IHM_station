@@ -286,6 +286,30 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/validationWidget.o: src/validationWidget.cpp.o
+.PHONY : src/validationWidget.o
+
+# target to build an object file
+src/validationWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.o
+.PHONY : src/validationWidget.cpp.o
+
+src/validationWidget.i: src/validationWidget.cpp.i
+.PHONY : src/validationWidget.i
+
+# target to preprocess a source file
+src/validationWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.i
+.PHONY : src/validationWidget.cpp.i
+
+src/validationWidget.s: src/validationWidget.cpp.s
+.PHONY : src/validationWidget.s
+
+# target to generate assembly for a file
+src/validationWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/validationWidget.cpp.s
+.PHONY : src/validationWidget.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -314,6 +338,9 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/validationWidget.o"
+	@echo "... src/validationWidget.i"
+	@echo "... src/validationWidget.s"
 .PHONY : help
 
 

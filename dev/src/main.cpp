@@ -9,6 +9,7 @@
 #include "MonitoringWidget.h"
 #include "ConsultWidget.h"
 #include <QFile>
+
 int main(int argc, char *argv[])
 {
 
