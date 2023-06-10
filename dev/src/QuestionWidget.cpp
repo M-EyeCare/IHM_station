@@ -23,7 +23,7 @@ QuestionWidget::QuestionWidget(char* question, char* consigne, char* key, std::m
 
     prevButton = new QPushButton("< Retour", this);
 
-    nextButton = new QPushButton("Suivant >", this);
+    //nextButton = new QPushButton("Suivant >", this);
 
     layout = new QGridLayout(this);
     layout->addWidget(consigneLabel, 0, 0, 1, 2, Qt::AlignCenter);
@@ -31,9 +31,8 @@ QuestionWidget::QuestionWidget(char* question, char* consigne, char* key, std::m
     layout->addWidget(yesButton, 2, 0, 1, 1, Qt::AlignCenter | Qt::AlignRight);
     layout->addWidget(noButton, 2, 1, 1, 1, Qt::AlignCenter | Qt::AlignLeft);
     layout->addWidget(prevButton, 3, 0, 1, 1, Qt::AlignLeft);
-    layout->addWidget(nextButton, 3, 1, 1, 1, Qt::AlignRight);
     
-    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
+    //connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
     connect(prevButton, SIGNAL(clicked()), this, SLOT(previous())); 
     connect(yesButton, SIGNAL(clicked()), this, SLOT(respondTrue()));
     connect(noButton, SIGNAL(clicked()), this, SLOT(respondFalse()));
@@ -53,12 +52,20 @@ void QuestionWidget::previous()
 
 void QuestionWidget::respondTrue()
 {
+    nextButton = new QPushButton("Suivant >", this);
+    layout->addWidget(nextButton, 3, 1, 1, 1, Qt::AlignRight);
+    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
+
     responseMap->insert(std::make_pair(key, true));
     emit(nextSig());
 }
 
 void QuestionWidget::respondFalse()
 {
+    nextButton = new QPushButton("Suivant >", this);
+    layout->addWidget(nextButton, 3, 1, 1, 1, Qt::AlignRight);
+    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
+
     responseMap->insert(std::make_pair(key, false));
     emit(nextSig());
 }

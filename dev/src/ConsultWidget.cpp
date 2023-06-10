@@ -5,6 +5,8 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
 
     responseMap = new std::map<char*, bool>();
 
+    WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
+
     SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
     SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !","CAPTEUR DE SUDATION", this);
     SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !","CAPTEUR DE PRESSION", this);
@@ -23,6 +25,8 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     QuestionWidget *rashesWidget= new QuestionWidget("Avez-vous des éruptions cutanées ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","rashes", responseMap,this);
     QuestionWidget *smokingWidget= new QuestionWidget("Êtes-vous fumeur ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","smoking", responseMap,this);
     
+    this->addWidget(welcomeWidget);
+    
     this->addWidget(bpmWidget);
     this->addWidget(sweatingWidget);
     this->addWidget(breathWidget);
@@ -40,6 +44,8 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     this->addWidget(treatmentWidget);
     this->addWidget(rashesWidget);
     this->addWidget(smokingWidget);
+
+    connect(welcomeWidget,SIGNAL(nextSig()), this, SLOT(nextWidget()));
 
     connect(bpmWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
     connect(bpmWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
@@ -89,7 +95,7 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
 
 void ConsultWidget::debug()
 {
-    // qDebug()<< responseMap->count("yolo");
+    qDebug()<< responseMap->count("yolo");
 }
 
 void ConsultWidget::nextWidget()

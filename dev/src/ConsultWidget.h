@@ -8,6 +8,8 @@
 #include <QTimer>
 #include "SensorWidget.h"
 #include "QuestionWidget.h"
+#include "WelcomeWidget.h"
+#include "ValidationWidget.h"
 
 class ConsultWidget : public QStackedWidget
 {
@@ -19,6 +21,8 @@ public:
     int bpm;
     int bcpm;
     int sweatingRate;
+
+    int id;
 
 
     ConsultWidget(QWidget * parent=nullptr);
