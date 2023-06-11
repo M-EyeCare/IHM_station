@@ -286,6 +286,30 @@ src/ValidationWidget.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/ValidationWidget.cpp.s
 .PHONY : src/ValidationWidget.cpp.s
 
+src/WelcomeWidget.o: src/WelcomeWidget.cpp.o
+.PHONY : src/WelcomeWidget.o
+
+# target to build an object file
+src/WelcomeWidget.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/WelcomeWidget.cpp.o
+.PHONY : src/WelcomeWidget.cpp.o
+
+src/WelcomeWidget.i: src/WelcomeWidget.cpp.i
+.PHONY : src/WelcomeWidget.i
+
+# target to preprocess a source file
+src/WelcomeWidget.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/WelcomeWidget.cpp.i
+.PHONY : src/WelcomeWidget.cpp.i
+
+src/WelcomeWidget.s: src/WelcomeWidget.cpp.s
+.PHONY : src/WelcomeWidget.s
+
+# target to generate assembly for a file
+src/WelcomeWidget.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/IHM_Station.dir/build.make CMakeFiles/IHM_Station.dir/src/WelcomeWidget.cpp.s
+.PHONY : src/WelcomeWidget.cpp.s
+
 src/main.o: src/main.cpp.o
 .PHONY : src/main.o
 
@@ -338,6 +362,9 @@ help:
 	@echo "... src/ValidationWidget.o"
 	@echo "... src/ValidationWidget.i"
 	@echo "... src/ValidationWidget.s"
+	@echo "... src/WelcomeWidget.o"
+	@echo "... src/WelcomeWidget.i"
+	@echo "... src/WelcomeWidget.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

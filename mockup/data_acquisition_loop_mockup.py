@@ -3,9 +3,15 @@ import random
 from time import sleep
 
 # DEFINITION DES MEMOIRES PARTAGEES
+
+questionMem=QtCore.QSharedMemory("QUEST")
+questionMem.create(32)
+questionMem.attach()
+
 bpmMem=QtCore.QSharedMemory("BPM")
 bpmMem.create(4)
 bpmMem.attach()
+
 
 tempMem=QtCore.QSharedMemory("TEMP")
 tempMem.create(4)
@@ -38,7 +44,14 @@ while(1):
                 bpmMem.unlock()
         # #######FIN DE LA PARTIE A COPIER#############
         activationMem.unlock()  # Déverrouiller la mémoire partagée
-        
+    
+    if(questionMem.lock()):
+        data=str(questionMem.data()[:32])
+        print("QUESTION RESPONSES:")
+        print(data)
+        questionMem.unlock()
+
+
     sleep(0.05)
 
 

@@ -24,10 +24,12 @@ protected:
     std::map<char*, bool> *responseMap;
 
 public:
-    ValidationWidget(std::map<char *, bool> *responseMap, QWidget *parent = nullptr);
+    ValidationWidget(QWidget *parent = nullptr);
 
 public slots:
     void confirm();
+    void previous();
+
 
 signals:
     void confirmSig();
