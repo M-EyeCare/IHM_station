@@ -99,7 +99,7 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     connect(smokingWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
     connect(smokingWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
 
-    connect(validationWidget, SIGNAL(confimSig()), this, SLOT(reset()));
+    connect(validationWidget, SIGNAL(confirmSig()), this, SLOT(reset()));
     connect(validationWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
 }
 
@@ -120,30 +120,73 @@ void ConsultWidget::previousWidget()
 
 void ConsultWidget::reset()
 {
-    qDebug()<<"Reset";
+    qDebug() << "Reset";
     bool run = true;
-    while(run){
-        
-        if(questionMem->lock()){
+    while (run)
+    {
 
-            //send responses
-            std::string questStr;
+        if (questionMem->lock())
+        {
+            // send responses
+            char buff[100] = "";
+            int i=0;
             for (std::map<char *, bool>::iterator it = responseMap->begin(); it != responseMap->end(); ++it)
             {
-                questStr = questStr + (char*)(it->second) + ";";
+                i++;
+                qDebug()<< i;
+
+                char *response=(char*)malloc(sizeof(char));
+
+                if (it->second)
+                {
+                    response="1";
+                }
+                else
+                {
+                    response="0";
+                }
+                strcat(buff, response);
+                strcat(buff, ";");
+                qDebug() << response;
+                qDebug() << buff;
             }
-            char* destination = (char*)questionMem->data();
-            const char* data = questStr.c_str();
-            qDebug()<< data;
+            qDebug() << buff;
 
+            char *destination = (char *)questionMem->data();
 
-            memcpy(destination,data,questionMem->size());
+            memcpy(destination, buff, questionMem->size());
 
             questionMem->unlock();
 
-            //RESET
+            // RESET
             responseMap = new std::map<char *, bool>();
 
+            questionMem = new QSharedMemory(this);
+            questionMem->setKey("QUEST");
+            questionMem->attach();
+
+
+            this->removeWidget(welcomeWidget);
+
+            this->removeWidget(bpmWidget);
+            this->removeWidget(sweatingWidget);
+            this->removeWidget(breathWidget);
+            this->removeWidget(tempWidget);
+
+            this->removeWidget(headacheWidget);
+            this->removeWidget(stomacacheWigget);
+            this->removeWidget(backacheWidget);
+            this->removeWidget(throatacheWidget);
+            this->removeWidget(breathingacheWidget);
+            this->removeWidget(otheracheWidget);
+            this->removeWidget(nauseasWidget);
+            this->removeWidget(tiredWidget);
+            this->removeWidget(sleepingWidget);
+            this->removeWidget(treatmentWidget);
+            this->removeWidget(rashesWidget);
+            this->removeWidget(smokingWidget);
+            this->removeWidget(validationWidget);
+            
             welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
             bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
@@ -165,12 +208,82 @@ void ConsultWidget::reset()
             smokingWidget = new QuestionWidget("Êtes-vous fumeur ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "smoking", responseMap, this);
 
             validationWidget = new ValidationWidget(this);
+            
+            this->addWidget(welcomeWidget);
 
-            qDebug()<<"reset";
+            this->addWidget(bpmWidget);
+            this->addWidget(sweatingWidget);
+            this->addWidget(breathWidget);
+            this->addWidget(tempWidget);
+
+            this->addWidget(headacheWidget);
+            this->addWidget(stomacacheWigget);
+            this->addWidget(backacheWidget);
+            this->addWidget(throatacheWidget);
+            this->addWidget(breathingacheWidget);
+            this->addWidget(otheracheWidget);
+            this->addWidget(nauseasWidget);
+            this->addWidget(tiredWidget);
+            this->addWidget(sleepingWidget);
+            this->addWidget(treatmentWidget);
+            this->addWidget(rashesWidget);
+            this->addWidget(smokingWidget);
+            this->addWidget(validationWidget);
+
+            connect(welcomeWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+
+            connect(bpmWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(bpmWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+            connect(sweatingWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(sweatingWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+            connect(breathWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(breathWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+            connect(tempWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(tempWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(headacheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(headacheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(stomacacheWigget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(stomacacheWigget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(backacheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(backacheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(throatacheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(throatacheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(breathingacheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(breathingacheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(otheracheWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(otheracheWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(nauseasWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(nauseasWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(tiredWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(tiredWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(sleepingWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(sleepingWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(treatmentWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(treatmentWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(rashesWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(rashesWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(smokingWidget, SIGNAL(nextSig()), this, SLOT(nextWidget()));
+            connect(smokingWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            connect(validationWidget, SIGNAL(confirmSig()), this, SLOT(reset()));
+            connect(validationWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
+
+            qDebug() << "reset";
             this->setCurrentIndex(0);
-            run =false;
+            run = false;
         }
         sleep(0.2);
     }
-
 }

@@ -5,7 +5,7 @@ from time import sleep
 # DEFINITION DES MEMOIRES PARTAGEES
 
 questionMem=QtCore.QSharedMemory("QUEST")
-questionMem.create(32)
+questionMem.create(100)
 questionMem.attach()
 
 bpmMem=QtCore.QSharedMemory("BPM")
@@ -46,7 +46,7 @@ while(1):
         activationMem.unlock()  # Déverrouiller la mémoire partagée
     
     if(questionMem.lock()):
-        data=str(questionMem.data()[:32])
+        data=str(questionMem.data(),encoding="utf-8")
         print("QUESTION RESPONSES:")
         print(data)
         questionMem.unlock()
