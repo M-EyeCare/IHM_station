@@ -37,7 +37,6 @@ QuestionWidget::QuestionWidget(char* question, char* consigne, char* key, std::m
     connect(yesButton, SIGNAL(clicked()), this, SLOT(respondTrue()));
     connect(noButton, SIGNAL(clicked()), this, SLOT(respondFalse()));
 
-
 }
 
 void QuestionWidget::next()
