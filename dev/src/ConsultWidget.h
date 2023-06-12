@@ -12,6 +12,7 @@
 #include "WelcomeWidget.h"
 #include "ValidationWidget.h"
 #include <time.h>
+#include <unistd.h>
 
 class ConsultWidget : public QStackedWidget
 {
