@@ -29,6 +29,7 @@ protected:
     QGridLayout *layout;
     QTimer *acquireTimer;
     QLabel *noticeLabel;
+    QLabel *analyseLabel;
     QLabel *capteurLabel;
     std::string memKey;
     std::string unit;

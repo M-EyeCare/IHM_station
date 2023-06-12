@@ -141,8 +141,7 @@ void ConsultWidget::reset()
                 i++;
                 qDebug()<< i;
 
-                char *response=(char*)malloc(sizeof(char));
-
+                char *response=(char*)malloc(2);
                 if (it->second)
                 {
                     response="1";
@@ -163,6 +162,8 @@ void ConsultWidget::reset()
             std::memcpy(destination, buff, questionMem->size());
 
             questionMem->unlock();
+
+            /*
 
             if (validationMem->lock())
             {
@@ -187,6 +188,7 @@ void ConsultWidget::reset()
                 qDebug()<<"after reset 0";
                 validationMem->unlock();
             }
+            */
 
             sleep(5);
 

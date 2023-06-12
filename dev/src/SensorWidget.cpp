@@ -35,6 +35,10 @@ SensorWidget::SensorWidget(QString memKey, float *valueStorage, QString noticeIm
     sensorValueLabel->setAlignment(Qt::AlignLeft);
     sensorValueLabel->setProperty("class","sensorLabel");
 
+    analyseLabel = new QLabel(this);
+    analyseLabel->setAlignment(Qt::AlignCenter);
+    analyseLabel->setProperty("class","analyseLabel");
+
     this->valueStorage = valueStorage;
 
     acquireButton = new QPushButton("Commencer l'acquisition", this);
@@ -50,7 +54,8 @@ SensorWidget::SensorWidget(QString memKey, float *valueStorage, QString noticeIm
     layout->addWidget(noticeImageLabel, 1, 0,1,2,Qt::AlignCenter);
     layout->addWidget(acquireButton, 3, 0, 1, 1, Qt::AlignRight);
     layout->addWidget(sensorValueLabel, 3, 1, 1, 1, Qt::AlignLeft);
-    layout->addWidget(prevButton, 4, 0, 1, 1, Qt::AlignLeft);
+    layout->addWidget(analyseLabel, 4, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(prevButton, 5, 0, 1, 1, Qt::AlignLeft);
     //layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
 
     acquireTimer = new QTimer(this);
@@ -138,18 +143,92 @@ void SensorWidget::acquire()
         if (acquisitionData == 1){
             // pulsation cardiaque
             qDebug()<<"analyse pulsation cardiaque";
+            if(*valueStorage>110.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez de tachycardie.")));
+                qDebug()<<"--> Tachycardie !";
+            }
+            else if(*valueStorage<50.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez de bradycardie.")));
+                qDebug()<<"--> Bradycardie !";
+            }
+            else{
+                analyseLabel->setStyleSheet("color: green;");
+                analyseLabel->setText(QString::fromStdString(std::string("RAS au niveau de la fréquence cardiaque.")));
+                qDebug()<<"RAS cardiaque";
+            }
         }
         else if (acquisitionData == 2){
             // temperature
             qDebug()<<"analyse temperature";
+            if(*valueStorage>=35.5 and *valueStorage<=38.5){
+                analyseLabel->setStyleSheet("color: green;");
+                analyseLabel->setText(QString::fromStdString(std::string("RAS au niveau de la température.")));
+                qDebug()<<"RAS température";
+            } else if(*valueStorage<35.5 and *valueStorage>=34.5) {
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez d'un inconfort, à surveiller ! ")));
+                qDebug()<<"--> Inconfort a surveiller ";
+            } else if(*valueStorage<34.5 and *valueStorage>=31.5) {
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez d'hypothermie légère.")));
+                qDebug()<<"--> Hypothermie legere ";
+            } else if(*valueStorage<31.5) {
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez d'hypothermie.")));
+                qDebug()<<"--> Hypothermie ";
+            }else if(*valueStorage<=39.5 and *valueStorage>38.5){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez de légère fièvre.")));
+                qDebug()<<"--> fièvre légère ";
+            }else if(*valueStorage<=40.5 and *valueStorage>39.5){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez d'une sévère fièvre ! ")));
+                qDebug()<<"--> fièvre sévère ";
+            } else {
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Les résultats sont trop anormaux, il faut reprendre la mesure.")));
+                qDebug()<<"--> reprendre la mesure ";
+            }
         }
         else if (acquisitionData == 3){
             // sudation
             qDebug()<<"analyse sudation";
+            if(*valueStorage<=700.00 or *valueStorage>=300.00){
+                analyseLabel->setStyleSheet("color: green;");
+                analyseLabel->setText(QString::fromStdString(std::string("RAS au niveau de la sudation.")));
+                qDebug()<<"RAS";
+            }
+            else if(*valueStorage>=700.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Votre sudation semble trop faible.")));
+                qDebug()<<"sudation trop faible";
+            }
+            else if(*valueStorage<=300.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Votre sudation semble trop forte.")));
+                qDebug()<<"sudation trop forte";
+            }
         }
         else if (acquisitionData == 4){
             // pression
             qDebug()<<"analyse pression";
+            if((*valueStorage>=12.00) and (*valueStorage<=20.00)){
+                analyseLabel->setStyleSheet("color: green;");
+                analyseLabel->setText(QString::fromStdString(std::string("RAS au niveau de la respiration.")));
+                qDebug()<<"RAS";
+            }
+            else if(*valueStorage>20.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez de tachypnée.")));
+                qDebug()<<"tachypnée";
+            }
+            else if(*valueStorage<12.00){
+                analyseLabel->setStyleSheet("color: red;");
+                analyseLabel->setText(QString::fromStdString(std::string("Il semblerait que vous souffriez de bradypnée.")));
+                qDebug()<<"bradypnée";
+            }
         }
         
         qDebug()<<"before reset 0";
