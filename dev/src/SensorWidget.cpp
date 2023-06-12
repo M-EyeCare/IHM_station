@@ -126,10 +126,10 @@ void SensorWidget::acquire()
     qDebug()<<"attempt to acquire sensor data";
     if (sensorMem->lock())
     {
-        valueStorage = (float *)(this->sensorMem->data());
+        *valueStorage = (float )*(int*)(this->sensorMem->data());
         *valueStorage/=10.0;
         qDebug() << "VALUE: " << *valueStorage;
-        std::string valueStr=std::to_string(float(*valueStorage/10));
+        std::string valueStr=std::to_string(*valueStorage);
         sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + valueStr.substr(0, valueStr.find(".")+3)+ std::string(" ") + unit));
         sensorMem->unlock();
         acquireTimer->stop();
