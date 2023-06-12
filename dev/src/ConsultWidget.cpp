@@ -9,6 +9,10 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     questionMem->setKey("QUEST");
     questionMem->attach();
 
+    validationMem = new QSharedMemory(this);
+    validationMem->setKey("VAL");
+    validationMem->attach();
+
     WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
     SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", "BPM", this);
@@ -123,11 +127,12 @@ void ConsultWidget::reset()
 {
     qDebug() << "Reset";
     bool run = true;
+
     while (run)
     {
-
         if (questionMem->lock())
         {
+                
             // send responses
             char buff[100] = "";
             int i=0;
@@ -155,17 +160,38 @@ void ConsultWidget::reset()
 
             char *destination = (char *)questionMem->data();
 
-            std::cout << buff << std::endl;
-
-            memcpy(destination, buff, questionMem->size());
+            std::memcpy(destination, buff, questionMem->size());
 
             questionMem->unlock();
 
-            sleep(3);
+            if (validationMem->lock())
+            {
+                int* data=(int*)malloc(sizeof(int));
+                int* destination = (int*)validationMem->data();
+                qDebug() << "envoi de la commande 5";
+                *data=5;
+                std::cout << data << std::endl;
+                memcpy(destination,data,validationMem->size());
+                validationMem->unlock();
+            }
+
+            sleep(0.5);
+
+            if(validationMem->lock())
+            {
+                int* data=(int*)malloc(sizeof(int));
+                int* destination = (int*)validationMem->data();
+                qDebug() << "remise à 0 de la commande 5";
+                *data=0;
+                memcpy(destination,data,validationMem->size());
+                qDebug()<<"after reset 0";
+                validationMem->unlock();
+            }
+
+            sleep(5);
 
             // RESET
             responseMap = new std::map<char *, bool>();
-
 
             this->setCurrentIndex(0);
 

@@ -165,5 +165,3 @@ void SensorWidget::acquire()
         emit(acquireSig());
     }
 }
-
-

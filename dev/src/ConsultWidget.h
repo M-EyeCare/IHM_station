@@ -21,6 +21,7 @@ public:
 
     std::map<char *, bool> *responseMap;
     QSharedMemory *questionMem;
+    QSharedMemory *validationMem;
     float temperature;
     float bpm;
     float bcpm;
