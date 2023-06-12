@@ -151,7 +151,7 @@ void ConsultWidget::reset()
                 strcat(buff, response);
                 strcat(buff, ";");
                 qDebug() << response;
-                // qDebug() << buff;
+                qDebug() << buff;
             }
             qDebug() << buff;
 
@@ -161,39 +161,37 @@ void ConsultWidget::reset()
 
             questionMem->unlock();
 
+            sleep(2);
+
             // RESET
             responseMap = new std::map<char *, bool>();
 
+            questionMem = new QSharedMemory(this);
+            questionMem->setKey("QUEST");
+            questionMem->attach();
 
-            this->setCurrentIndex(0);
 
-            for(int i = this->count(); i>0; i--){
-                QWidget* widget = this->widget(i);
-                this->removeWidget(widget);
-                widget->deleteLater();
-            }
+            this->removeWidget(welcomeWidget);
 
-            // this->removeWidget(welcomeWidget);
+            this->removeWidget(bpmWidget);
+            this->removeWidget(sweatingWidget);
+            this->removeWidget(breathWidget);
+            this->removeWidget(tempWidget);
 
-            // this->removeWidget(bpmWidget);
-            // this->removeWidget(sweatingWidget);
-            // this->removeWidget(breathWidget);
-            // this->removeWidget(tempWidget);
-
-            // this->removeWidget(headacheWidget);
-            // this->removeWidget(stomacacheWigget);
-            // this->removeWidget(backacheWidget);
-            // this->removeWidget(throatacheWidget);
-            // this->removeWidget(breathingacheWidget);
-            // this->removeWidget(otheracheWidget);
-            // this->removeWidget(nauseasWidget);
-            // this->removeWidget(tiredWidget);
-            // this->removeWidget(sleepingWidget);
-            // this->removeWidget(treatmentWidget);
-            // this->removeWidget(rashesWidget);
-            // this->removeWidget(smokingWidget);
-            // this->removeWidget(validationWidget);
-
+            this->removeWidget(headacheWidget);
+            this->removeWidget(stomacacheWigget);
+            this->removeWidget(backacheWidget);
+            this->removeWidget(throatacheWidget);
+            this->removeWidget(breathingacheWidget);
+            this->removeWidget(otheracheWidget);
+            this->removeWidget(nauseasWidget);
+            this->removeWidget(tiredWidget);
+            this->removeWidget(sleepingWidget);
+            this->removeWidget(treatmentWidget);
+            this->removeWidget(rashesWidget);
+            this->removeWidget(smokingWidget);
+            this->removeWidget(validationWidget);
+            
             welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
             bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
@@ -288,7 +286,8 @@ void ConsultWidget::reset()
             connect(validationWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
 
             qDebug() << "reset";
-            run=false;
+            this->setCurrentIndex(0);
+            run = false;
         }
         sleep(0.2);
     }
