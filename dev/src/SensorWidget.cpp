@@ -1,6 +1,6 @@
 #include "SensorWidget.h"
 
-SensorWidget::SensorWidget(QString memKey, float *valueStorage, QString noticeImagePath, QString notice ,QString capteur ,QWidget *parent) : QWidget(parent)
+SensorWidget::SensorWidget(QString memKey, float *valueStorage, QString noticeImagePath, QString notice , QString capteur, QString unit, QWidget *parent) : QWidget(parent)
 {
     sensorMem = new QSharedMemory();
     sensorMem->setKey(memKey);
@@ -8,6 +8,7 @@ SensorWidget::SensorWidget(QString memKey, float *valueStorage, QString noticeIm
     sensorMem->attach();
 
     this->memKey = memKey.toStdString();
+    this->unit = unit.toStdString();
 
     activationMem = new QSharedMemory();
     activationMem->setKey("ACT");
@@ -128,7 +129,8 @@ void SensorWidget::acquire()
         valueStorage = (float *)(this->sensorMem->data());
         *valueStorage/=10.0;
         qDebug() << "VALUE: " << *valueStorage;
-        sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + std::to_string(float(*valueStorage/10))));
+        std::string valueStr=std::to_string(float(*valueStorage/10));
+        sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + valueStr.substr(0, valueStr.find(".")+3)+ std::string(" ") + unit));
         sensorMem->unlock();
         acquireTimer->stop();
 

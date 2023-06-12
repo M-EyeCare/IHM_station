@@ -11,10 +11,10 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
 
     WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
-    SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
-    SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", this);
-    SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", this);
-    SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE",this);
+    SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", "BPM", this);
+    SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", "", this);
+    SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", "CPM", this);
+    SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE","°C",this);
     
     QuestionWidget *headacheWidget= new QuestionWidget("Ressentez vous des douleurs au crâne ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","headache", responseMap,this);
     QuestionWidget *stomacacheWigget= new QuestionWidget("Ressentez vous des douleurs au ventre ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","stomacache", responseMap,this);
@@ -196,13 +196,13 @@ void ConsultWidget::reset()
             // this->removeWidget(smokingWidget);
             // this->removeWidget(validationWidget);
 
-            WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
+            welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
-            SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
-            SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", this);
-            SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", this);
-            SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE",this);
-            
+            bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", "BPM", this);
+            sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", "", this);
+            breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", "CPM", this);
+            tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE","°C",this);
+
             headacheWidget = new QuestionWidget("Ressentez vous des douleurs au crâne ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "headache", responseMap, this);
             stomacacheWigget = new QuestionWidget("Ressentez vous des douleurs au ventre ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "stomacache", responseMap, this);
             backacheWidget = new QuestionWidget("Ressentez vous des douleurs au dos ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "backache", responseMap, this);

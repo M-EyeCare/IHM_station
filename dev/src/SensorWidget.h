@@ -31,7 +31,7 @@ protected:
     QLabel *noticeLabel;
     QLabel *capteurLabel;
     std::string memKey;
-
+    std::string unit;
 public:
     SensorWidget(QString memKey, float *valueStorage, QString noticeImagePath, QString notice, QString capteur, QString unit, QWidget *parent = nullptr);
 
