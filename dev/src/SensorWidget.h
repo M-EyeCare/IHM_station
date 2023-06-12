@@ -18,7 +18,7 @@ protected:
     QSharedMemory *sensorMem;
     QSharedMemory *activationMem;
     QImage *noticeImage;
-    int *valueStorage;
+    float *valueStorage;
     QPushButton *prevButton;
     QPushButton *nextButton;
     QPushButton *acquireButton;
@@ -30,7 +30,7 @@ protected:
     std::string memKey;
 
 public:
-    SensorWidget(QString memKey, int *valueStorage, QString noticeImagePath, QString notice, QString capteur, QWidget *parent = nullptr);
+    SensorWidget(QString memKey, float *valueStorage, QString noticeImagePath, QString notice, QString capteur, QString unit, QWidget *parent = nullptr);
 
 public slots:
     void acquire();

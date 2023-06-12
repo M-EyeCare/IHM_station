@@ -5,8 +5,8 @@ import mysql.connector
 from datetime import datetime
 from time import strftime
 
-#from smartcard.System import readers
-#from smartcard.util import toHexString
+from smartcard.System import readers
+from smartcard.util import toHexString
 
 import PySide6.QtCore as QtCore
 import random

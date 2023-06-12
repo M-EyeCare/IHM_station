@@ -21,10 +21,10 @@ public:
 
     std::map<char *, bool> *responseMap;
     QSharedMemory *questionMem;
-    int temperature;
-    int bpm;
-    int bcpm;
-    int sweatingRate;
+    float temperature;
+    float bpm;
+    float bcpm;
+    float sweatingRate;
     int id;
 
     WelcomeWidget *welcomeWidget;
