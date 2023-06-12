@@ -19,7 +19,7 @@ WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QS
     welcomeLabel->setText(welcomeText);
     welcomeLabel->setProperty("class", "welcomeLabel");
 
-    //Logo ?
+    //Logo
     QPixmap notImg(logoPath);
     QLabel * logoLabel= new QLabel();
     logoLabel->setPixmap(notImg.scaled(500,500,Qt::KeepAspectRatio));
@@ -37,24 +37,12 @@ WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QS
     startButton->setProperty("class","startButton");
 
     layout = new QGridLayout(this);
-    layout->addWidget(logoLabel, 0, 0,1,2,Qt::AlignCenter);
-    layout->addWidget(welcomeLabel, 1, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(welcomeLabel, 0, 0, 1, 2, Qt::AlignCenter);
+    layout->addWidget(logoLabel, 1, 0,1,2,Qt::AlignCenter);
     layout->addWidget(introLabel, 2, 0, 1, 2, Qt::AlignCenter);
     layout->addWidget(startButton, 3, 0, 1, 2, Qt::AlignCenter);
 
-    /*
-    layout = new QGridLayout(this);
-    layout->addWidget(capteurLabel, 0, 0, 1, 2, Qt::AlignCenter);
-    layout->addWidget(noticeLabel, 2, 0, 1, 2, Qt::AlignCenter);
-    layout->addWidget(noticeImageLabel, 1, 0,1,2,Qt::AlignCenter);
-    layout->addWidget(acquireButton, 3, 0, 1, 1, Qt::AlignCenter);
-    layout->addWidget(sensorValueLabel, 3, 1, 1, 1, Qt::AlignCenter);
-    layout->addWidget(prevButton, 4, 0, 1, 1, Qt::AlignLeft);
-    layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
-    */
-
     connect(startButton, SIGNAL(clicked()), this, SLOT(start()));
-
 }
 
 void WelcomeWidget::start()

@@ -5,8 +5,6 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
 
     responseMap = new std::map<char*, bool>();
 
-    responseMap = new std::map<char *, bool>();
-
     questionMem = new QSharedMemory(this);
     questionMem->setKey("QUEST");
     questionMem->attach();
@@ -14,9 +12,9 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
     SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
-    SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !","CAPTEUR DE SUDATION", this);
-    SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !","CAPTEUR DE PRESSION", this);
-    SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR DE TEMPERATURE",this);
+    SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", this);
+    SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", this);
+    SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE",this);
     
     QuestionWidget *headacheWidget= new QuestionWidget("Ressentez vous des douleurs au crâne ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","headache", responseMap,this);
     QuestionWidget *stomacacheWigget= new QuestionWidget("Ressentez vous des douleurs au ventre ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","stomacache", responseMap,this);
@@ -31,7 +29,7 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     QuestionWidget *rashesWidget= new QuestionWidget("Avez-vous des éruptions cutanées ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","rashes", responseMap,this);
     QuestionWidget *smokingWidget= new QuestionWidget("Êtes-vous fumeur ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS","smoking", responseMap,this);
     
-    validationWidget = new ValidationWidget(this);
+    validationWidget = new ValidationWidget("../img/logo.png", this);
     
     this->addWidget(welcomeWidget);
     
@@ -157,48 +155,54 @@ void ConsultWidget::reset()
 
             char *destination = (char *)questionMem->data();
 
+            std::cout << buff << std::endl;
+
             memcpy(destination, buff, questionMem->size());
 
             questionMem->unlock();
 
-            sleep(2);
+            sleep(3);
 
             // RESET
             responseMap = new std::map<char *, bool>();
 
-            questionMem = new QSharedMemory(this);
-            questionMem->setKey("QUEST");
-            questionMem->attach();
 
+            this->setCurrentIndex(0);
 
-            this->removeWidget(welcomeWidget);
+            for(int i = this->count(); i>0; i--){
+                QWidget* widget = this->widget(i);
+                this->removeWidget(widget);
+                widget->deleteLater();
+            }
 
-            this->removeWidget(bpmWidget);
-            this->removeWidget(sweatingWidget);
-            this->removeWidget(breathWidget);
-            this->removeWidget(tempWidget);
+            // this->removeWidget(welcomeWidget);
 
-            this->removeWidget(headacheWidget);
-            this->removeWidget(stomacacheWigget);
-            this->removeWidget(backacheWidget);
-            this->removeWidget(throatacheWidget);
-            this->removeWidget(breathingacheWidget);
-            this->removeWidget(otheracheWidget);
-            this->removeWidget(nauseasWidget);
-            this->removeWidget(tiredWidget);
-            this->removeWidget(sleepingWidget);
-            this->removeWidget(treatmentWidget);
-            this->removeWidget(rashesWidget);
-            this->removeWidget(smokingWidget);
-            this->removeWidget(validationWidget);
+            // this->removeWidget(bpmWidget);
+            // this->removeWidget(sweatingWidget);
+            // this->removeWidget(breathWidget);
+            // this->removeWidget(tempWidget);
+
+            // this->removeWidget(headacheWidget);
+            // this->removeWidget(stomacacheWigget);
+            // this->removeWidget(backacheWidget);
+            // this->removeWidget(throatacheWidget);
+            // this->removeWidget(breathingacheWidget);
+            // this->removeWidget(otheracheWidget);
+            // this->removeWidget(nauseasWidget);
+            // this->removeWidget(tiredWidget);
+            // this->removeWidget(sleepingWidget);
+            // this->removeWidget(treatmentWidget);
+            // this->removeWidget(rashesWidget);
+            // this->removeWidget(smokingWidget);
+            // this->removeWidget(validationWidget);
+
+            WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
+
+            SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
+            SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", this);
+            SensorWidget *breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Approchez votre bouche de l'embout et respirez normalement dans le petit tube !","CAPTEUR DE PRESSION", this);
+            SensorWidget *tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Positionnez le capteur dans le creux de votre coude et venez toucher votre épaule avec mon main !", "CAPTEUR DE TEMPERATURE",this);
             
-            welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
-
-            bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", this);
-            sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR DE SUDATION", this);
-            breathWidget = new SensorWidget("BREATH", &bcpm, "../img/breathNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR DE PRESSION", this);
-            tempWidget = new SensorWidget("TEMP", &temperature, "../img/tempNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR DE TEMPERATURE", this);
-
             headacheWidget = new QuestionWidget("Ressentez vous des douleurs au crâne ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "headache", responseMap, this);
             stomacacheWigget = new QuestionWidget("Ressentez vous des douleurs au ventre ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "stomacache", responseMap, this);
             backacheWidget = new QuestionWidget("Ressentez vous des douleurs au dos ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "backache", responseMap, this);
@@ -212,7 +216,7 @@ void ConsultWidget::reset()
             rashesWidget = new QuestionWidget("Avez-vous des éruptions cutanées ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "rashes", responseMap, this);
             smokingWidget = new QuestionWidget("Êtes-vous fumeur ?", "VEUILLEZ REPONDRE AUX QUESTION CI-DESSOUS", "smoking", responseMap, this);
 
-            validationWidget = new ValidationWidget(this);
+            validationWidget = new ValidationWidget("../img/logo.png", this);
             
             this->addWidget(welcomeWidget);
 
@@ -286,8 +290,7 @@ void ConsultWidget::reset()
             connect(validationWidget, SIGNAL(previousSig()), this, SLOT(previousWidget()));
 
             qDebug() << "reset";
-            this->setCurrentIndex(0);
-            run = false;
+            run=false;
         }
         sleep(0.2);
     }

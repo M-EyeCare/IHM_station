@@ -19,12 +19,14 @@ protected:
     QLabel *topLabel;
     QLabel *midLabel;
     QLabel *bottomLabel;
+    QLabel *siteLabel;
     QGridLayout *layout;
+    QImage *logo;
     QSharedMemory * questMem;
     std::map<char*, bool> *responseMap;
 
 public:
-    ValidationWidget(QWidget *parent = nullptr);
+    ValidationWidget(QString logoPath, QWidget *parent = nullptr);
 
 public slots:
     void confirm();

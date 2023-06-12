@@ -14,6 +14,9 @@ class SensorWidget : public QWidget
 {
     Q_OBJECT
 
+private:
+    int acquisitionData;
+
 protected:
     QSharedMemory *sensorMem;
     QSharedMemory *activationMem;

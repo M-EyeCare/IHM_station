@@ -73,9 +73,6 @@ void SensorWidget::previous()
 
 void SensorWidget::startAcquire()
 {
-    nextButton = new QPushButton("Suivant >", this);
-    layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
-    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
 
     int* data=(int*)malloc(sizeof(int));
     // qDebug() << "before destination";
@@ -104,6 +101,9 @@ void SensorWidget::startAcquire()
         }
         // qDebug() << "before memcpy";
 
+        // Affecter la valeur de data à acquisitionData
+        acquisitionData = *data;
+
         memcpy(destination,data,activationMem->size());
         // qDebug() << "after memcpy";
         
@@ -118,15 +118,37 @@ void SensorWidget::startAcquire()
 
 void SensorWidget::acquire()
 {
+    nextButton = new QPushButton("Suivant >", this);
+    layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
+    connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
+
     qDebug()<<"attempt to acquire sensor data";
     if (sensorMem->lock())
     {
-        valueStorage = (float *)((int*)(this->sensorMem->data()));
+        valueStorage = (float *)(this->sensorMem->data());
         *valueStorage/=10.0;
         qDebug() << "VALUE: " << *valueStorage;
-        sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + std::to_string(float(*valueStorage/10.0))));
+        sensorValueLabel->setText(QString::fromStdString(std::string("Valeur capteur: ") + std::to_string(float(*valueStorage/10))));
         sensorMem->unlock();
         acquireTimer->stop();
+
+        // Utiliser la valeur de acquisitionData pour récup la demande capteur
+        if (acquisitionData == 1){
+            // pulsation cardiaque
+            qDebug()<<"analyse pulsation cardiaque";
+        }
+        else if (acquisitionData == 2){
+            // temperature
+            qDebug()<<"analyse temperature";
+        }
+        else if (acquisitionData == 3){
+            // sudation
+            qDebug()<<"analyse sudation";
+        }
+        else if (acquisitionData == 4){
+            // pression
+            qDebug()<<"analyse pression";
+        }
         
         qDebug()<<"before reset 0";
         if(activationMem->lock())
