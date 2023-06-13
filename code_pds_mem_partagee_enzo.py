@@ -146,7 +146,7 @@ def con_carte():
     print("L'identifiant du patient est : ",id_patient)
     connection.disconnect()
     return id_patient"""
-    return 3
+    return 6
     
 
 # fonction d'envoi des donnees a la BD
@@ -276,6 +276,8 @@ def main():
                         
                         send=int(res_pulse*10)
                         bpmMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                        send=0
+                        activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
                         bpmMem.unlock()
 
             # capteur de temperature
@@ -306,6 +308,8 @@ def main():
                             print("Redemander la mesure")
                         send=int(res_temp*10)
                         tempMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                        send=0
+                        activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
                         tempMem.unlock()
             
             # capteur de sudation
@@ -328,6 +332,8 @@ def main():
                             print("--> Sudation anormalement basse")
                         send=int(res_sud*10) 
                         sweatingMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                        send=0
+                        activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
                         sweatingMem.unlock()
             # capteur de pression
             elif(data==4):
@@ -362,6 +368,8 @@ def main():
                                 print("--> Bradypnee ! ")
                         send=int(res_press *10)
                         breathMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                        send=0
+                        activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
                         breathMem.unlock()
             
             # si toutes les infos sont recuperees, on envoie a la bd
@@ -389,7 +397,6 @@ def main():
                     diag_press = False
                     send=0
                     activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
-                    activationMem.unlock()
                     questionMem.unlock()
                     
             elif(data==6):
@@ -420,13 +427,6 @@ def main():
                     byteStr=bytearray(name,"utf-8")
                     size=len(byteStr)
                     cardMem.data()[:size]=byteStr
-
-
-
-
-
-
-                    activationMem.unlock()
                     cardMem.unlock()
                 else:
                     sleep(0.5)
