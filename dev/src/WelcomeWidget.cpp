@@ -62,21 +62,28 @@ void WelcomeWidget::start()
         memcpy(destination,data,activationMem->size());
         activationMem->unlock();
     }
+
     sleep(1);
 
-    int* valueCard=(int*)malloc(sizeof(int));
+    char* valueCard=(char*)malloc(sizeof(char));
     qDebug()<<"attempt to acquire card identifier";
-    if (cardMem->lock())
-    {
-        *valueCard = *(int*)(this->cardMem->data());
-        qDebug() << "VALUE CARD : " << *valueCard;
-        std::string valueStr=std::to_string(*valueCard);
-        welcomeLabel->setText(QString::fromStdString(std::string("Bienvenue au patient n° ") + valueStr));
-        cardMem->unlock();
+    bool run=true;
 
-        introLabel->setText("Maintenant, veuillez appuyer sur le bouton \"Commencer\"");
-        startButton->setText("Commencer");
-        connect(startButton, SIGNAL(clicked()), this, SLOT(start2()));
+    while(run){
+        if (cardMem->lock())
+        {
+            valueCard = (char*)(this->cardMem->data());
+            std::string valueStr=std::string(valueCard);
+            qDebug() << "NAME CARD : " << valueCard;
+            welcomeLabel->setText(QString::fromStdString(std::string("Bienvenue ") + valueStr + std::string(" ! ")));
+            cardMem->unlock();
+
+            introLabel->setText("Maintenant, veuillez appuyer sur le bouton \"Commencer\"");
+            startButton->setText("Commencer");
+            connect(startButton, SIGNAL(clicked()), this, SLOT(start2()));
+            run=false;
+        }
+        sleep(0.2);
     }
 }
 
@@ -86,3 +93,40 @@ void WelcomeWidget::start2()
 }
 
 
+
+
+/*
+int* valueCard=(int*)malloc(sizeof(int));
+    qDebug()<<"attempt to acquire card identifier";
+    bool run=true;
+
+    while(run){
+        if (cardMem->lock())
+        {
+            *valueCard = *(int*)(this->cardMem->data());
+
+            // Exécution d'une requête SQL
+            sql::Statement *stmt;
+            sql::ResultSet *res;
+
+            stmt = con->createStatement();
+            // Construction de la requête SQL
+            std::string query = "SELECT name FROM PATIENTS WHERE id=" + std::to_string(valueCard);
+            // Exécution de la requête SQL
+            res = stmt->executeQuery(query);
+
+            qDebug() << "NAME CARD : " << res;
+
+            
+            //std::string valueStr=std::to_string(valueCard);
+            //welcomeLabel->setText(QString::fromStdString(std::string("Bienvenue au patient n° ") + valueStr));
+            cardMem->unlock();
+
+            introLabel->setText("Maintenant, veuillez appuyer sur le bouton \"Commencer\"");
+            startButton->setText("Commencer");
+            connect(startButton, SIGNAL(clicked()), this, SLOT(start2()));
+            run=false;
+        }
+        sleep(1);
+    
+*/
