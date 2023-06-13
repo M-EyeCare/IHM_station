@@ -9,6 +9,7 @@ from time import strftime
 import PySide6.QtCore as QtCore
 import random
 from time import sleep
+import ctypes
 
 # DEFINITION DES MEMOIRES PARTAGEES
 bpmMem=QtCore.QSharedMemory("BPM")
@@ -396,10 +397,35 @@ def main():
                 print("Récupération de l'identifiant du patient")
                 if(cardMem.lock()):
                     send_act=0
+
                     send_card=con_carte()
                     print(send_card)
+
+                    conn = mysql.connector.connect(user="311698",password="phpMEyeConsult",host="mysql-meyeconsult.alwaysdata.net",port=3306,database="meyeconsult_diagnostic")
+                    cursor=conn.cursor(buffered=True)
+                    cursor.execute("SELECT name FROM PATIENTS WHERE id=%s",(send_card,))
+                    conn.commit()
+                    res = cursor.fetchone()
+                    for resultat in res :
+                        name = resultat 
+                        print("name : ",name)
+                    cursor.close()
+                    conn.close()
+                    print(name)
+
                     activationMem.data()[:3]=send_act.to_bytes(3,'little')#remise à 0 de la valeur sur la memoire partagee
-                    cardMem.data()[:3]=send_card.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                    #cardMem.data()[:3]=send_card.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                    
+                    #cardMem.data()[:3]=name.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                    byteStr=bytearray(name,"utf-8")
+                    size=len(byteStr)
+                    cardMem.data()[:size]=byteStr
+
+
+
+
+
+
                     activationMem.unlock()
                     cardMem.unlock()
                 else:
