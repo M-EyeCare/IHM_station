@@ -4,10 +4,8 @@ import time
 import mysql.connector
 from datetime import datetime
 from time import strftime
-
-from smartcard.System import readers
-from smartcard.util import toHexString
-
+#from smartcard.System import readers
+#from smartcard.util import toHexString
 import PySide6.QtCore as QtCore
 import random
 from time import sleep
@@ -34,8 +32,12 @@ activationMem.create(4)
 activationMem.attach()
 
 questionMem = QtCore.QSharedMemory("QUEST")
-questionMem.create(32)
+questionMem.create(100)
 questionMem.attach()
+
+#validationMem = QtCore.QSharedMemory("VAL")
+#validationMem.create(4)
+#validationMem.attach()
 
 # variables pour recuperer les infos sur la tablette -> A INITIALISER A FALSE
 debut_diag = True
@@ -56,78 +58,82 @@ def analyse_questions(texte):
     print(texte)
     ressenti = ""
     valeurs = texte.split(";")
-    if(valeurs[0]=="1"):
-        # question : Ressentez-vous des douleurs ?
-        ressenti = ressenti + "Douleurs. "
-        print("Douleurs. ")
 
-    if(valeurs[1]=="1"):
-        # question : Ressentez-vous des douleurs au crane ?
-        ressenti = ressenti + "Douleurs au crane. "
-        print("Douleurs au crane. ")
+    if len(valeurs) > 1:
+        if(valeurs[0]=="1"):
+            # question : Ressentez-vous des douleurs ?
+            ressenti = ressenti + "Douleurs. "
+            print("Douleurs. ")
 
-    if(valeurs[2]=="1"):
-        # question : Ressentez-vous des douleurs au ventre ?
-        ressenti = ressenti + "Douleurs au ventre. "
-        print("Douleurs au ventre. ")
+        if(valeurs[1]=="1"):
+            # question : Ressentez-vous des douleurs au crane ?
+            ressenti = ressenti + "Douleurs au crane. "
+            print("Douleurs au crane. ")
 
-    if(valeurs[3]=="1"):
-        # question : Ressentez-vous des douleurs au dos ?
-        ressenti = ressenti + "Douleurs au dos. "
-        print("Douleurs au dos. ")
-    
-    if(valeurs[4]=="1"):
-        # question : Ressentez-vous des douleurs a la gorge ?
-        ressenti = ressenti + "Douleurs a la gorge. "
-        print("Douleurs a la gorge. ")
-    
-    if(valeurs[5]=="1"):
-        # question : Avez-vous une respiration douloureuse ?
-        ressenti = ressenti + "Respiration douloureuse. "
-        print("Respiration douloureuse. ")
-    
-    if(valeurs[6]=="1"):
-        # question : Avez-vous des douleurs autres que celles enoncees precedemment ?
-        ressenti = ressenti + "Autres douleurs. "
-        print("Autres douleurs. ")
-    
-    if(valeurs[7]=="1"):
-        # question : Avez-vous des nausees ?
-        ressenti = ressenti + "Presence de nausees. "
-        print("Presence de nausees. ")
-    
-    if(valeurs[8]=="1"):
-        # question : Ressentez-vous une fatigue ?
-        ressenti = ressenti + "Ressenti de fatigue. "
-        print("Ressenti de fatigue. ")
-    
-    if(valeurs[9]=="1"):
-        # question : Avez-vous des troubles du sommeil ?
-        ressenti = ressenti + "Troubles du sommeil. "
-        print("Troubles du sommeil. ")
-    
-    if(valeurs[10]=="1"):
-        # question : Suivez-vous actuellement un traitement ?
-        ressenti = ressenti + "Le patient suit actuellement un traitement. "
-        print("Le patient suit actuellement un traitement. ")
-    
-    if(valeurs[11]=="1"):
-        # question : Avez-vous des eruptions cutanees ?
-        ressenti = ressenti + "Presence d'eruptions cutanees. "
-        print("Presence d'eruptions cutanees. ")
-    
-    if(valeurs[12]=="1"):
-        # question : etes-vous fumeur ?
-        ressenti = ressenti + "Patient fumeur. "
-        print("Patient fumeur. ")
+        if(valeurs[2]=="1"):
+            # question : Ressentez-vous des douleurs au ventre ?
+            ressenti = ressenti + "Douleurs au ventre. "
+            print("Douleurs au ventre. ")
+
+        if(valeurs[3]=="1"):
+            # question : Ressentez-vous des douleurs au dos ?
+            ressenti = ressenti + "Douleurs au dos. "
+            print("Douleurs au dos. ")
         
+        if(valeurs[4]=="1"):
+            # question : Ressentez-vous des douleurs a la gorge ?
+            ressenti = ressenti + "Douleurs a la gorge. "
+            print("Douleurs a la gorge. ")
+        
+        if(valeurs[5]=="1"):
+            # question : Avez-vous une respiration douloureuse ?
+            ressenti = ressenti + "Respiration douloureuse. "
+            print("Respiration douloureuse. ")
+        
+        if(valeurs[6]=="1"):
+            # question : Avez-vous des douleurs autres que celles enoncees precedemment ?
+            ressenti = ressenti + "Autres douleurs. "
+            print("Autres douleurs. ")
+        
+        if(valeurs[7]=="1"):
+            # question : Avez-vous des nausees ?
+            ressenti = ressenti + "Presence de nausees. "
+            print("Presence de nausees. ")
+        
+        if(valeurs[8]=="1"):
+            # question : Ressentez-vous une fatigue ?
+            ressenti = ressenti + "Ressenti de fatigue. "
+            print("Ressenti de fatigue. ")
+        
+        if(valeurs[9]=="1"):
+            # question : Avez-vous des troubles du sommeil ?
+            ressenti = ressenti + "Troubles du sommeil. "
+            print("Troubles du sommeil. ")
+        
+        if(valeurs[10]=="1"):
+            # question : Suivez-vous actuellement un traitement ?
+            ressenti = ressenti + "Le patient suit actuellement un traitement. "
+            print("Le patient suit actuellement un traitement. ")
+        
+        if(valeurs[11]=="1"):
+            # question : Avez-vous des eruptions cutanees ?
+            ressenti = ressenti + "Presence d'eruptions cutanees. "
+            print("Presence d'eruptions cutanees. ")
+        
+        if(valeurs[12]=="1"):
+            # question : etes-vous fumeur ?
+            ressenti = ressenti + "Patient fumeur. "
+            print("Patient fumeur. ")
+    else:
+        print("Problème de réception du ressenti du patient.")       
+        ressenti = "Problème de transmission des données."
     return ressenti
         
 
 
 # fonction de connexion au lecteur de carte a puce, la carte doit deja etre inseree
 def con_carte():
-    
+    """
     sc_readers=readers()
     connection = sc_readers[0].createConnection()
     connection.connect() 
@@ -138,8 +144,8 @@ def con_carte():
     id_patient = data[3]
     print("L'identifiant du patient est : ",id_patient)
     connection.disconnect()
-    return id_patient
-    #return 3
+    return id_patient"""
+    return 3
     
 
 # fonction d'envoi des donnees a la BD
@@ -190,7 +196,7 @@ def com_bd(res_pulse, res_temp, res_sud, res_press, ressenti):
     dmla = False
     report = ""
     validated = False
-    id_doctor = 1
+    id_doctor = None
     ref1 = (id_result,diabetes,dmla,report,validated,id_doctor)
     cursor.execute("INSERT INTO RESULTS(id, diabetes, dmla, report, validated, idDoctor) VALUES (%s, %s, %s, %s, %s, %s)",ref1)
     conn.commit()
@@ -220,6 +226,10 @@ def main():
     # ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     ser.reset_input_buffer()
+    if ser.isOpen():
+        print("La connexion série est ouverte.")
+    else:
+        print("Impossible d'ouvrir la connexion série.")
     
     # variable pour le capteur de pression
     cpm=0
@@ -228,11 +238,18 @@ def main():
         
         #if(bouton_appuye == True):
         #    debut_diag=True
+
+        
         
         # si le bouton "debut diag" a ete enclenche
         if(debut_diag==True and activationMem.lock()):
+
+            #print("En attente de commande")
             # Recuperation la valeur en memoire partagee
             data=int(activationMem.data()[0])
+            #data_quest=int(validationMem.data()[0])
+
+            #print(data_quest)
 
             # on envoie le message a l'arduino
             ser.write(repr(data).encode('utf-8'))
@@ -349,25 +366,49 @@ def main():
             # si toutes les infos sont recuperees, on envoie a la bd
             if((diag_pulse==True)and(diag_temp==True)and(diag_sud==True)and(diag_press==True)):
                 # on remet les signaux a false
-                diag_pulse = False
-                diag_temp = False
-                diag_sud = False
-                diag_press = False
                 # on indique la fin du diag, on attend que le bouton soit de nouveau appuye
                 #debut_diag = false
                 # on envoie a la bd
                 print("Fin du diagnostic")
+
+                sleep(3)
+
                 if(questionMem.lock()):
-                    data=str(questionMem.data(),encoding="utf-8")
-                    print("QUESTION RESPONSES:")
+
+                    source = questionMem.data()
+                    data = bytes(source).decode('utf-8') 
                     print(data)
-                    questionMem.unlock()
                     ressenti = analyse_questions(data)
                     print("Envoi des donnees en base de donnees")
                     com_bd(res_pulse, res_temp, res_sud, res_press, ressenti)
-                else :
-                    sleep(1)
+                    diag_pulse = False
+                    diag_temp = False
+                    diag_sud = False
+                    diag_press = False
+                    questionMem.unlock()
+
+
+
+
+                    """
+                    texte=str(questionMem.data(),encoding="utf-8")
+                    print("QUESTION RESPONSES:")
+                    print(texte)
+                    questionMem.unlock()
+                    ressenti = analyse_questions(texte)
+                    print("Envoi des donnees en base de donnees")
+                    com_bd(res_pulse, res_temp, res_sud, res_press, ressenti)
+                    diag_pulse = False
+                    diag_temp = False
+                    diag_sud = False
+                    diag_press = False"""
+                else:
+                    sleep(0.5)
+                    print("en attente que le verrou soit libre")
+            
             activationMem.unlock()  # Deverrouiller la memoire partagee
+        else:
+            print("Problème de verrou ou diagnostic mal terminé")
         sleep(0.05)
 
 main()
