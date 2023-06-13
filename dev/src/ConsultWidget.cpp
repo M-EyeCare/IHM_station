@@ -211,7 +211,6 @@ void ConsultWidget::reset()
             // RESET
             responseMap = new std::map<char *, bool>();
 
-            this->setCurrentIndex(0);
 
             for(int i = this->count(); i>0; i--){
                 QWidget* widget = this->widget(i);
@@ -241,7 +240,8 @@ void ConsultWidget::reset()
 
             validationWidget = new ValidationWidget("../img/logo.png", this);
             
-            this->addWidget(welcomeWidget);
+            this->insertWidget(0,welcomeWidget);
+            this->setCurrentIndex(0);
 
             this->addWidget(bpmWidget);
             this->addWidget(sweatingWidget);
