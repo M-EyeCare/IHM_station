@@ -9,6 +9,9 @@
 #include <iostream>
 #include <QGridLayout>
 #include <QTimer>
+#include <time.h>
+#include <unistd.h>
+
 
 class WelcomeWidget : public QWidget
 {
@@ -20,9 +23,12 @@ protected:
     
     QImage *logo;
 
-    int *valueId;
+    //int *valueCard;
 
     QPushButton *startButton;
+
+    QSharedMemory *cardMem;
+    QSharedMemory *activationMem;
     
     QLabel *welcomeLabel;
     QLabel *introLabel;
@@ -33,10 +39,11 @@ protected:
     //std::string memKey;
 
 public:
-    WelcomeWidget(int *valueId, QString logoPath, QString welcome, QString intro, QString name, QWidget *parent = nullptr);
+    WelcomeWidget(QString logoPath, QString welcome, QString intro, QString name, QWidget *parent = nullptr);
 
 public slots:
     void start();
+    void start2();
 
 signals:
     void nextSig();

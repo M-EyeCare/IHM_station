@@ -1,6 +1,6 @@
 #include "WelcomeWidget.h"
 
-WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QString intro, QString name, QWidget *parent) : QWidget(parent)
+WelcomeWidget::WelcomeWidget(QString logoPath, QString welcome, QString intro, QString name, QWidget *parent) : QWidget(parent)
 {
     /*sensorMem = new QSharedMemory();
     sensorMem->setKey(memKey);
@@ -12,6 +12,15 @@ WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QS
     activationMem->setKey("ACT");
 
     activationMem->attach();*/
+
+    // Mémoire pour la récupération de l'identifiant de la mémoire partagée
+    cardMem = new QSharedMemory(this);
+    cardMem->setKey("CARD");
+    cardMem->attach();
+
+    activationMem = new QSharedMemory(this);
+    activationMem->setKey("ACT");
+    activationMem->attach();
 
     // Bienvenue dans la station de diagnostic M'Eye Consult ! 
     welcomeLabel = new QLabel(this);
@@ -31,9 +40,7 @@ WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QS
     introLabel->setText(introText);
     introLabel->setProperty("class", "introLabel");
 
-    this->valueId = valueId;
-
-    startButton = new QPushButton("Commencer", this);
+    startButton = new QPushButton("J'ai inséré ma carte vitale", this);
     startButton->setProperty("class","startButton");
 
     layout = new QGridLayout(this);
@@ -46,6 +53,34 @@ WelcomeWidget::WelcomeWidget(int *valueId, QString logoPath, QString welcome, QS
 }
 
 void WelcomeWidget::start()
+{
+
+    int* data=(int*)malloc(sizeof(int));
+    if (activationMem->lock()){
+        int* destination = (int*)activationMem->data();
+        *data=6;
+        memcpy(destination,data,activationMem->size());
+        activationMem->unlock();
+    }
+    sleep(1);
+
+    int* valueCard=(int*)malloc(sizeof(int));
+    qDebug()<<"attempt to acquire card identifier";
+    if (cardMem->lock())
+    {
+        *valueCard = *(int*)(this->cardMem->data());
+        qDebug() << "VALUE CARD : " << *valueCard;
+        std::string valueStr=std::to_string(*valueCard);
+        welcomeLabel->setText(QString::fromStdString(std::string("Bienvenue au patient n° ") + valueStr));
+        cardMem->unlock();
+
+        introLabel->setText("Maintenant, veuillez appuyer sur le bouton \"Commencer\"");
+        startButton->setText("Commencer");
+        connect(startButton, SIGNAL(clicked()), this, SLOT(start2()));
+    }
+}
+
+void WelcomeWidget::start2()
 {
     emit(nextSig());
 }

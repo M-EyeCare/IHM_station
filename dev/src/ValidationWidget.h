@@ -32,7 +32,6 @@ public slots:
     void confirm();
     void previous();
 
-
 signals:
     void confirmSig();
     void previousSig();

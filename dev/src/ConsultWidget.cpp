@@ -13,7 +13,11 @@ ConsultWidget::ConsultWidget(QWidget *parent) : QStackedWidget(parent)
     validationMem->setKey("VAL");
     validationMem->attach();
 
-    WelcomeWidget *welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
+    activationMem = new QSharedMemory(this);
+    activationMem->setKey("ACT");
+    activationMem->attach();
+
+    WelcomeWidget *welcomeWidget = new WelcomeWidget("../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur le bouton", "Julia", this);
 
     SensorWidget *bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", "BPM", this);
     SensorWidget *sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", "", this);
@@ -163,15 +167,27 @@ void ConsultWidget::reset()
 
             questionMem->unlock();
 
-            /*
+            // Utilisation de la mémoire partagée ACT
+            if (activationMem->lock())
+            {
+                int* data=(int*)malloc(sizeof(int));
+                int* destination = (int*)activationMem->data();
+                qDebug() << "envoi de la commande 5";
+                *data=5;
+                std::cout << *data << std::endl;
+                memcpy(destination,data,activationMem->size());
+                activationMem->unlock();
+            }
 
+            
+            /*
             if (validationMem->lock())
             {
                 int* data=(int*)malloc(sizeof(int));
                 int* destination = (int*)validationMem->data();
                 qDebug() << "envoi de la commande 5";
                 *data=5;
-                std::cout << data << std::endl;
+                std::cout << *data << std::endl;
                 memcpy(destination,data,validationMem->size());
                 validationMem->unlock();
             }
@@ -202,29 +218,8 @@ void ConsultWidget::reset()
                 this->removeWidget(widget);
                 widget->deleteLater();
             }
-
-            // this->removeWidget(welcomeWidget);
-
-            // this->removeWidget(bpmWidget);
-            // this->removeWidget(sweatingWidget);
-            // this->removeWidget(breathWidget);
-            // this->removeWidget(tempWidget);
-
-            // this->removeWidget(headacheWidget);
-            // this->removeWidget(stomacacheWigget);
-            // this->removeWidget(backacheWidget);
-            // this->removeWidget(throatacheWidget);
-            // this->removeWidget(breathingacheWidget);
-            // this->removeWidget(otheracheWidget);
-            // this->removeWidget(nauseasWidget);
-            // this->removeWidget(tiredWidget);
-            // this->removeWidget(sleepingWidget);
-            // this->removeWidget(treatmentWidget);
-            // this->removeWidget(rashesWidget);
-            // this->removeWidget(smokingWidget);
-            // this->removeWidget(validationWidget);
-
-            welcomeWidget = new WelcomeWidget(&id, "../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
+            
+            welcomeWidget = new WelcomeWidget("../img/logo.png", "Bienvenue dans la station de diagnostic M'Eye Consult ! ", "Avant de démarrer le diagnostic, veuillez insérer votre carte vitale dans le lecteur puis, appuyez sur \"Commencer\"", "Julia", this);
 
             bpmWidget = new SensorWidget("BPM", &bpm, "../img/bpmNotice.png", "Glissez votre doigt à l'intérieur du petit rouleau dans lequel se trouve le capteur !", "CAPTEUR CARDIAQUE", "BPM", this);
             sweatingWidget = new SensorWidget("SWEATING", &sweatingRate, "../img/sweatingNotice.png", "Glissez l'index et le majeur dans les petits rouleaux qui contiennent les capteurs !","CAPTEUR DE SUDATION", "", this);
