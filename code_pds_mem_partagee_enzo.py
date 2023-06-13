@@ -35,9 +35,9 @@ questionMem = QtCore.QSharedMemory("QUEST")
 questionMem.create(100)
 questionMem.attach()
 
-#validationMem = QtCore.QSharedMemory("VAL")
-#validationMem.create(4)
-#validationMem.attach()
+cardMem = QtCore.QSharedMemory("CARD")
+cardMem.create(100)
+cardMem.attach()
 
 # variables pour recuperer les infos sur la tablette -> A INITIALISER A FALSE
 debut_diag = True
@@ -364,19 +364,20 @@ def main():
                         breathMem.unlock()
             
             # si toutes les infos sont recuperees, on envoie a la bd
-            if((diag_pulse==True)and(diag_temp==True)and(diag_sud==True)and(diag_press==True)):
+            #if((diag_pulse==True)and(diag_temp==True)and(diag_sud==True)and(diag_press==True)):
+            elif(data==5):
                 # on remet les signaux a false
                 # on indique la fin du diag, on attend que le bouton soit de nouveau appuye
                 #debut_diag = false
                 # on envoie a la bd
                 print("Fin du diagnostic")
 
-                sleep(3)
+                sleep(2)
 
                 if(questionMem.lock()):
 
                     source = questionMem.data()
-                    data = bytes(source).decode('utf-8') 
+                    data = str(source, encoding="utf-8") 
                     print(data)
                     ressenti = analyse_questions(data)
                     print("Envoi des donnees en base de donnees")
@@ -385,23 +386,22 @@ def main():
                     diag_temp = False
                     diag_sud = False
                     diag_press = False
+                    send=0
+                    activationMem.data()[:3]=send.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                    activationMem.unlock()
                     questionMem.unlock()
-
-
-
-
-                    """
-                    texte=str(questionMem.data(),encoding="utf-8")
-                    print("QUESTION RESPONSES:")
-                    print(texte)
-                    questionMem.unlock()
-                    ressenti = analyse_questions(texte)
-                    print("Envoi des donnees en base de donnees")
-                    com_bd(res_pulse, res_temp, res_sud, res_press, ressenti)
-                    diag_pulse = False
-                    diag_temp = False
-                    diag_sud = False
-                    diag_press = False"""
+                    
+            elif(data==6):
+                # récupération de l'identifiant du patient
+                print("Récupération de l'identifiant du patient")
+                if(cardMem.lock()):
+                    send_act=0
+                    send_card=con_carte()
+                    print(send_card)
+                    activationMem.data()[:3]=send_act.to_bytes(3,'little')#remise à 0 de la valeur sur la memoire partagee
+                    cardMem.data()[:3]=send_card.to_bytes(3,'little')#envoyer la valeur sur la memoire partagee
+                    activationMem.unlock()
+                    cardMem.unlock()
                 else:
                     sleep(0.5)
                     print("en attente que le verrou soit libre")
