@@ -125,7 +125,7 @@ void SensorWidget::startAcquire()
 void SensorWidget::acquire()
 {
     nextButton = new QPushButton("Suivant >", this);
-    layout->addWidget(nextButton, 4, 1, 1, 1, Qt::AlignRight);
+    layout->addWidget(nextButton, 5, 1, 1, 1, Qt::AlignRight);
     connect(nextButton, SIGNAL(clicked()), this, SLOT(next()));
 
     qDebug()<<"attempt to acquire sensor data";
