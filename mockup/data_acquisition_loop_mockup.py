@@ -29,8 +29,29 @@ activationMem = QtCore.QSharedMemory("ACT")
 activationMem.create(4)
 activationMem.attach()
 
+cardMem = QtCore.QSharedMemory("CARD")
+cardMem.create(100)
+cardMem.attach()
+
+string = "Je m'appel Enzo"
+byteString = bytearray(string,'utf-8')
+size=len(byteString)
+
+
 
 while(1):
+    if cardMem.lock():
+        print("write")
+
+        cardMem.data()[:size] = byteString
+        cardMem.unlock()
+
+    if cardMem.lock():
+        print("read")
+
+        string = bytearray(cardMem.data()[:99])
+        print(string.decode('utf-8'))
+        cardMem.unlock()
 
     if(activationMem.lock()):  # Verrouiller la mémoire partagée
         data=int(activationMem.data()[0])#RECUPERER LA VALEUR CORRESPONDANT A UN CAPTEUR (1,2,3,4)

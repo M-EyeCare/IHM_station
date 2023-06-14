@@ -4,8 +4,8 @@ import time
 import mysql.connector
 from datetime import datetime
 from time import strftime
-#from smartcard.System import readers
-#from smartcard.util import toHexString
+from smartcard.System import readers
+from smartcard.util import toHexString
 import PySide6.QtCore as QtCore
 import random
 from time import sleep
@@ -134,7 +134,7 @@ def analyse_questions(texte):
 
 # fonction de connexion au lecteur de carte a puce, la carte doit deja etre inseree
 def con_carte():
-    """
+    
     sc_readers=readers()
     connection = sc_readers[0].createConnection()
     connection.connect() 
@@ -145,8 +145,8 @@ def con_carte():
     id_patient = data[3]
     print("L'identifiant du patient est : ",id_patient)
     connection.disconnect()
-    return id_patient"""
-    return 6
+    return id_patient
+    # return 6
     
 
 # fonction d'envoi des donnees a la BD
