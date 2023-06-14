@@ -164,9 +164,9 @@ def con_carte():
             id_patient = data[3]
             print("L'identifiant du patient est : ", id_patient)
             connection.disconnect()
-            break  # Sortir de la boucle si la carte est lue avec succès
+            return id_patient  # Sortir de la boucle si la carte est lue avec succès
 
-        except NoCardException:
+        except:
             print("Aucune carte insérée. Veuillez insérer une carte.")
 
         # Attendre avant de réessayer la lecture
