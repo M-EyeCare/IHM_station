@@ -40,7 +40,7 @@ WelcomeWidget::WelcomeWidget(QString logoPath, QString welcome, QString intro, Q
     introLabel->setText(introText);
     introLabel->setProperty("class", "introLabel");
 
-    startButton = new QPushButton("J'ai inséré ma carte vitale", this);
+    startButton = new QPushButton(" J'ai inséré ma carte vitale ", this);
     startButton->setProperty("class","startButton");
 
     layout = new QGridLayout(this);
@@ -75,10 +75,10 @@ void WelcomeWidget::start()
             valueCard = (char*)(this->cardMem->data());
             std::string valueStr=std::string(valueCard);
             qDebug() << "NAME CARD : " << valueCard;
-            welcomeLabel->setText(QString::fromStdString(std::string("Bienvenue ") + valueStr + std::string(" ! ")));
+            welcomeLabel->setText(QString::fromStdString(std::string("<html><body><p style='font-size:18pt;font-weight:bold;'> Bienvenue ") + valueStr + std::string(" ! </p></body></html>")));
             cardMem->unlock();
 
-            introLabel->setText("Maintenant, veuillez appuyer sur le bouton \"Commencer\"");
+            introLabel->setText("<html><body><p style='font-size:18pt;font-weight:bold;'> Maintenant, veuillez appuyer sur le bouton \"Commencer\" </p></body></html>");
             startButton->setText("Commencer");
             connect(startButton, SIGNAL(clicked()), this, SLOT(start2()));
             run=false;
