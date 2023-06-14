@@ -4,8 +4,10 @@ import time
 import mysql.connector
 from datetime import datetime
 from time import strftime
-#from smartcard.System import readers
-#from smartcard.util import toHexString
+
+from smartcard.System import readers
+from smartcard.util import toHexString
+
 import PySide6.QtCore as QtCore
 import random
 from time import sleep
@@ -146,7 +148,31 @@ def con_carte():
     print("L'identifiant du patient est : ",id_patient)
     connection.disconnect()
     return id_patient"""
-    return 6
+    #return 6
+
+    sc_readers = readers()
+    connection = None
+
+    while True:
+        try:
+            connection = sc_readers[0].createConnection()
+            connection.connect() 
+
+            # Lecture de l'identifiant du patient
+            APDUcmd = [0x80, 0xBE, 0x00, 0x10, 0x04]
+            data, sw1, sw2 = connection.transmit(APDUcmd)
+            id_patient = data[3]
+            print("L'identifiant du patient est : ", id_patient)
+            connection.disconnect()
+            break  # Sortir de la boucle si la carte est lue avec succès
+
+        except NoCardException:
+            print("Aucune carte insérée. Veuillez insérer une carte.")
+
+        # Attendre avant de réessayer la lecture
+        time.sleep(1)
+
+
     
 
 # fonction d'envoi des donnees a la BD
@@ -355,7 +381,8 @@ def main():
                         print("age : ",age)
                     cursor.close()
                     conn.close()
-                    line = ser.readline().decode('utf-8').rstrip()
+                    #line = ser.readline().decode('utf-8').rstrip()
+                    line=random.uniform(6,10)
                     if(line!=""):
                         print(line)
                         diag_press = True
